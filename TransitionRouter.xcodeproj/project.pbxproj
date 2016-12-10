@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		0651E22D1DF70398001199DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E22C1DF70398001199DB /* AppDelegate.swift */; };
-		0651E22F1DF70398001199DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E22E1DF70398001199DB /* ViewController.swift */; };
-		0651E2321DF70398001199DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0651E2301DF70398001199DB /* Main.storyboard */; };
+		0651E22F1DF70398001199DB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E22E1DF70398001199DB /* FirstViewController.swift */; };
 		0651E2341DF70398001199DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0651E2331DF70398001199DB /* Assets.xcassets */; };
 		0651E2371DF70398001199DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0651E2351DF70398001199DB /* LaunchScreen.storyboard */; };
+		0651E2481DF70433001199DB /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E2441DF70433001199DB /* TransitionAnimator.swift */; };
+		0651E2491DF70433001199DB /* TransitionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E2451DF70433001199DB /* TransitionRouter.swift */; };
+		0651E24B1DF706C8001199DB /* SlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E24A1DF706C8001199DB /* SlideTransitionAnimator.swift */; };
+		0651E24D1DF70776001199DB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E24C1DF70776001199DB /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0651E2291DF70398001199DB /* TransitionRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransitionRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0651E22C1DF70398001199DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0651E22E1DF70398001199DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0651E2311DF70398001199DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0651E22E1DF70398001199DB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		0651E2331DF70398001199DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0651E2361DF70398001199DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0651E2381DF70398001199DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0651E2441DF70433001199DB /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		0651E2451DF70433001199DB /* TransitionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRouter.swift; sourceTree = "<group>"; };
+		0651E24A1DF706C8001199DB /* SlideTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionAnimator.swift; sourceTree = "<group>"; };
+		0651E24C1DF70776001199DB /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,33 @@
 		0651E22B1DF70398001199DB /* TransitionRouter */ = {
 			isa = PBXGroup;
 			children = (
+				0651E2401DF70433001199DB /* Transition */,
 				0651E22C1DF70398001199DB /* AppDelegate.swift */,
-				0651E22E1DF70398001199DB /* ViewController.swift */,
-				0651E2301DF70398001199DB /* Main.storyboard */,
+				0651E22E1DF70398001199DB /* FirstViewController.swift */,
+				0651E24C1DF70776001199DB /* SecondViewController.swift */,
 				0651E2331DF70398001199DB /* Assets.xcassets */,
 				0651E2351DF70398001199DB /* LaunchScreen.storyboard */,
 				0651E2381DF70398001199DB /* Info.plist */,
 			);
 			path = TransitionRouter;
+			sourceTree = "<group>";
+		};
+		0651E2401DF70433001199DB /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				0651E2451DF70433001199DB /* TransitionRouter.swift */,
+				0651E2411DF70433001199DB /* Animators */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		0651E2411DF70433001199DB /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				0651E2441DF70433001199DB /* TransitionAnimator.swift */,
+				0651E24A1DF706C8001199DB /* SlideTransitionAnimator.swift */,
+			);
+			path = Animators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +150,6 @@
 			files = (
 				0651E2371DF70398001199DB /* LaunchScreen.storyboard in Resources */,
 				0651E2341DF70398001199DB /* Assets.xcassets in Resources */,
-				0651E2321DF70398001199DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0651E22F1DF70398001199DB /* ViewController.swift in Sources */,
+				0651E22F1DF70398001199DB /* FirstViewController.swift in Sources */,
+				0651E2491DF70433001199DB /* TransitionRouter.swift in Sources */,
+				0651E24B1DF706C8001199DB /* SlideTransitionAnimator.swift in Sources */,
+				0651E24D1DF70776001199DB /* SecondViewController.swift in Sources */,
+				0651E2481DF70433001199DB /* TransitionAnimator.swift in Sources */,
 				0651E22D1DF70398001199DB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,14 +172,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0651E2301DF70398001199DB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0651E2311DF70398001199DB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0651E2351DF70398001199DB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,6 +317,7 @@
 				0651E23D1DF70398001199DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

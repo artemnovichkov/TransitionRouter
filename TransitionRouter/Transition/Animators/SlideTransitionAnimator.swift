@@ -43,28 +43,10 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
     private func show(using transitionContext: UIViewControllerContextTransitioning) {
         let (fromViewController, toViewController) = configure(using: transitionContext)
         
-        switch direction {
-        case .top:
-            toViewController.top()
-        case .left:
-            toViewController.left()
-        case .bottom:
-            toViewController.bottom()
-        case .right:
-            toViewController.right()
-        }
+        toViewController.updateFrame(with: direction)
         
         UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
-            switch self.direction {
-            case .top:
-                fromViewController.bottom()
-            case .left:
-                fromViewController.right()
-            case .bottom:
-                fromViewController.top()
-            case .right:
-                fromViewController.left()
-            }
+            fromViewController.updateFrame(with: self.direction, reverse: true)
             toViewController.center()
         }) { _ in
             transitionContext.completeTransition(true)
@@ -75,16 +57,7 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
         let (fromViewController, toViewController) = configure(using: transitionContext)
         
         UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
-            switch self.direction {
-            case .top:
-                fromViewController.top()
-            case .left:
-                fromViewController.left()
-            case .bottom:
-                fromViewController.bottom()
-            case .right:
-                fromViewController.right()
-            }
+            fromViewController.updateFrame(with: self.direction)
             toViewController.center()
         }) { _ in
             transitionContext.completeTransition(true)
@@ -94,23 +67,32 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
 
 fileprivate extension UIViewController {
     
-    func center() {
+    func updateFrame(with direction: AnimationDirection, reverse: Bool = false) {
+        switch direction {
+        case .top:    reverse ? bottom() : top()
+        case .left:   reverse ? right()  : left()
+        case .bottom: reverse ? top()    : bottom()
+        case .right:  reverse ? left()   : right()
+        }
+    }
+    
+    private func center() {
         view.frame.origin = .zero
     }
     
-    func top() {
+    private func top() {
         view.frame.origin.y -= view.frame.size.height
     }
     
-    func left() {
+    private func left() {
         view.frame.origin.x -= view.frame.size.width
     }
     
-    func bottom() {
+    private func bottom() {
         view.frame.origin.y += view.frame.size.height
     }
     
-    func right() {
+    private func right() {
         view.frame.origin.x += view.frame.size.width
     }
 }

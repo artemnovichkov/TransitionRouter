@@ -12,6 +12,7 @@ protocol TransitionAnimator: UIViewControllerAnimatedTransitioning {
     
     var duration: TimeInterval { get }
     var presenting: Bool { get set }
+    var options: AnimationOptions { get set }
 }
 
 extension TransitionAnimator {

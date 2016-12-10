@@ -15,6 +15,7 @@ enum AnimationDirection {
 final class SlideTransitionAnimator: NSObject, TransitionAnimator {
     
     var presenting = true
+    var options: AnimationOptions = .default
     
     fileprivate let direction: AnimationDirection
     
@@ -53,7 +54,7 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
             toViewController.right()
         }
         
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
             switch self.direction {
             case .top:
                 fromViewController.bottom()
@@ -73,7 +74,7 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
     private func dismiss(using transitionContext: UIViewControllerContextTransitioning) {
         let (fromViewController, toViewController) = configure(using: transitionContext)
         
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
             switch self.direction {
             case .top:
                 fromViewController.top()

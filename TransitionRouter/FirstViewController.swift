@@ -8,6 +8,15 @@
 
 import UIKit
 
+extension UIButton {
+    
+    static func custom(with text: String) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.setTitle(text, for: .normal)
+        return button
+    }
+}
+
 class FirstViewController: UIViewController {
 
     private let topRouter = TransitionRouter(type: .top)
@@ -15,37 +24,18 @@ class FirstViewController: UIViewController {
     private let bottomRouter = TransitionRouter(type: .bottom)
     private let rightRouter = TransitionRouter(type: .right)
     
-    private var selectedAnimator: TransitionRouter? {
+    private var selectedRouter: TransitionRouter? {
         didSet {
             let vc = SecondViewController()
-            vc.transitioningDelegate = selectedAnimator
+            vc.transitioningDelegate = selectedRouter
             self.present(vc, animated: true, completion: nil)
         }
     }
     
-    private let topButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Top", for: .normal)
-        return button
-    }()
-    
-    private let leftButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Left", for: .normal)
-        return button
-    }()
-    
-    private let bottomButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Bottom", for: .normal)
-        return button
-    }()
-    
-    private let rightButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Right", for: .normal)
-        return button
-    }()
+    private let topButton: UIButton = .custom(with: "Top")
+    private let leftButton: UIButton = .custom(with: "Left")
+    private let bottomButton: UIButton = .custom(with: "Bottom")
+    private let rightButton: UIButton = .custom(with: "Right")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,19 +66,19 @@ class FirstViewController: UIViewController {
     }
     
     func selectTopRouter() {
-        selectedAnimator = topRouter
+        selectedRouter = topRouter
     }
     
     func selectLeftRouter() {
-        selectedAnimator = leftRouter
+        selectedRouter = leftRouter
     }
     
     func selectBottomRouter() {
-        selectedAnimator = bottomRouter
+        selectedRouter = bottomRouter
     }
     
     func selectRightRouter() {
-        selectedAnimator = rightRouter
+        selectedRouter = rightRouter
     }
 }
 

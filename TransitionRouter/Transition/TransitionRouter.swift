@@ -28,8 +28,15 @@ final class TransitionRouter: NSObject {
     
     fileprivate var animator: TransitionAnimator
     
+    var options: AnimationOptions = .default {
+        willSet {
+            animator.options = newValue
+        }
+    }
+    
     init(type: AnimatorType) {
-        self.animator = type.animator
+        let animator = type.animator
+        self.animator = animator
     }
 }
 

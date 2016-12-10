@@ -23,6 +23,7 @@ class FirstViewController: UIViewController {
     private let leftRouter = TransitionRouter(type: .left)
     private let bottomRouter = TransitionRouter(type: .bottom)
     private let rightRouter = TransitionRouter(type: .right)
+    private let fadeRouter = TransitionRouter(type: .custom(animator: FadeTransitionAnimator()))
     
     private var selectedRouter: TransitionRouter? {
         didSet {
@@ -78,7 +79,7 @@ class FirstViewController: UIViewController {
     }
     
     func selectRightRouter() {
-        selectedRouter = rightRouter
+        selectedRouter = fadeRouter
     }
 }
 

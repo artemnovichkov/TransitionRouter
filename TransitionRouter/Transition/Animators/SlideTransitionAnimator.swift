@@ -96,7 +96,8 @@ fileprivate extension UIViewController {
     }
 }
 
-fileprivate extension UIViewControllerContextTransitioning {
+//TODO: Move to another file
+extension UIViewControllerContextTransitioning {
     
     var completion: ((Bool) -> Swift.Void) {
         return { _ in

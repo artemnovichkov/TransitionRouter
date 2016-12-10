@@ -23,12 +23,21 @@ extension TransitionAnimator {
         return 0.5
     }
     
+    //TODO: Maybe move to UIViewControllerContextTransitioning?
     func configure(using transitionContext: UIViewControllerContextTransitioning) -> Controllers {
         let fromViewController = transitionContext.viewController(forKey: .from)!
         let toViewController = transitionContext.viewController(forKey: .to)!
         let containerView = transitionContext.containerView
         
-        containerView.addSubview(toViewController.view)
+        if presenting {
+            containerView.addSubview(fromViewController.view)
+            containerView.addSubview(toViewController.view)
+        }
+        else {
+            containerView.addSubview(toViewController.view)
+            containerView.addSubview(fromViewController.view)
+        }
+        
         
         return (fromViewController, toViewController)
     }

@@ -26,7 +26,7 @@ final class SlideTransitionAnimator: NSObject, TransitionAnimator {
 
 extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
     
-    typealias AnimateTransitionHandler = (UIViewControllerContextTransitioning) -> ()
+    private typealias AnimateTransitionHandler = (UIViewControllerContextTransitioning) -> ()
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
@@ -36,7 +36,9 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
         return animateTransition(for: presenting)(transitionContext)
     }
     
-    func animateTransition(for presenting: Bool) -> AnimateTransitionHandler {
+    //MARK: - Private
+    
+    private func animateTransition(for presenting: Bool) -> AnimateTransitionHandler {
         return presenting ? show : dismiss
     }
     
@@ -48,20 +50,17 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
             fromViewController.updateFrame(with: self.direction, reverse: true)
             toViewController.center()
-        }) { _ in
-            transitionContext.completeTransition(true)
-        }
+        }, completion: transitionContext.completion)
     }
     
     private func dismiss(using transitionContext: UIViewControllerContextTransitioning) {
         let (fromViewController, toViewController) = configure(using: transitionContext)
         
+        
         UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
             fromViewController.updateFrame(with: self.direction)
             toViewController.center()
-        }) { _ in
-            transitionContext.completeTransition(true)
-        }
+        }, completion: transitionContext.completion)
     }
 }
 
@@ -76,7 +75,7 @@ fileprivate extension UIViewController {
         }
     }
     
-    private func center() {
+    func center() {
         view.frame.origin = .zero
     }
     
@@ -94,5 +93,14 @@ fileprivate extension UIViewController {
     
     private func right() {
         view.frame.origin.x += view.frame.size.width
+    }
+}
+
+fileprivate extension UIViewControllerContextTransitioning {
+    
+    var completion: ((Bool) -> Swift.Void) {
+        return { _ in
+            self.completeTransition(true)
+        }
     }
 }

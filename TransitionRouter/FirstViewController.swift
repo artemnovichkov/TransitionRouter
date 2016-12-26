@@ -22,6 +22,7 @@ class FirstViewController: UIViewController {
     private let topRouter = TransitionRouter(type: .top)
     private let leftRouter = TransitionRouter(type: .left)
     private let leftInteractiveRouter = TransitionRouter(type: .left)
+    private let rightInteractiveRouter = TransitionRouter(type: .right)
     private let bottomRouter = TransitionRouter(type: .bottom)
     private let rightRouter = TransitionRouter(type: .right)
     private let fadeRouter = TransitionRouter(type: .custom(animator: FadeTransitionAnimator()))
@@ -52,14 +53,33 @@ class FirstViewController: UIViewController {
         view.addSubview(rightButton)
         rightButton.addTarget(self, action: #selector(FirstViewController.selectRightRouter), for: .touchUpInside)
         
-        let recognizer = UIScreenEdgePanGestureRecognizer()
-        recognizer.edges = .left
-        recognizer.add(leftInteractiveRouter) { 
+        let leftRecognizer = UIScreenEdgePanGestureRecognizer()
+        leftRecognizer.edges = .left
+        leftInteractiveRouter.add(leftRecognizer, presentHandler: { router in
             let vc = SecondViewController()
-            vc.transitioningDelegate = self.leftInteractiveRouter
+            vc.transitioningDelegate = router
             self.present(vc, animated: true, completion: nil)
+        }) { recognizer -> CGFloat in
+            let translation = recognizer.translation(in: recognizer.view!)
+            let d = translation.x / recognizer.view!.bounds.width * 0.5
+            print(d)
+            return d
         }
-        view.addGestureRecognizer(recognizer)
+        view.addGestureRecognizer(leftRecognizer)
+        
+        let rightRecognizer = UIScreenEdgePanGestureRecognizer()
+        rightRecognizer.edges = .right
+        rightInteractiveRouter.add(rightRecognizer, presentHandler: { router in
+            let vc = SecondViewController()
+            vc.transitioningDelegate = router
+            self.present(vc, animated: true, completion: nil)
+        }) { recognizer -> CGFloat in
+            let translation = recognizer.translation(in: recognizer.view!)
+            let d = translation.x * -1 / recognizer.view!.bounds.width * 0.5
+            print(d)
+            return d
+        }
+        view.addGestureRecognizer(rightRecognizer)
     }
     
     override func viewDidLayoutSubviews() {

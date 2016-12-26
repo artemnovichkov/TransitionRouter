@@ -21,6 +21,7 @@ class FirstViewController: UIViewController {
 
     private let topRouter = TransitionRouter(type: .top)
     private let leftRouter = TransitionRouter(type: .left)
+    private let leftInteractiveRouter = TransitionRouter(type: .left)
     private let bottomRouter = TransitionRouter(type: .bottom)
     private let rightRouter = TransitionRouter(type: .right)
     private let fadeRouter = TransitionRouter(type: .custom(animator: FadeTransitionAnimator()))
@@ -50,6 +51,15 @@ class FirstViewController: UIViewController {
         bottomButton.addTarget(self, action: #selector(FirstViewController.selectBottomRouter), for: .touchUpInside)
         view.addSubview(rightButton)
         rightButton.addTarget(self, action: #selector(FirstViewController.selectRightRouter), for: .touchUpInside)
+        
+        let recognizer = UIScreenEdgePanGestureRecognizer()
+        recognizer.edges = .left
+        recognizer.add(leftInteractiveRouter) { 
+            let vc = SecondViewController()
+            vc.transitioningDelegate = self.leftInteractiveRouter
+            self.present(vc, animated: true, completion: nil)
+        }
+        view.addGestureRecognizer(recognizer)
     }
     
     override func viewDidLayoutSubviews() {

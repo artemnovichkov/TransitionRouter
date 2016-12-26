@@ -8,12 +8,11 @@
 
 import UIKit
 
-protocol TransitionAnimator: UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning {
+protocol TransitionAnimator: UIViewControllerAnimatedTransitioning {
     
     var duration: TimeInterval { get }
     var presenting: Bool { get set }
     var options: AnimationOptions { get set }
-    var interactive: Bool { get }
 }
 
 //MARK: - Defaults
@@ -62,4 +61,10 @@ extension UIViewControllerContextTransitioning {
             self.completeTransition(!self.transitionWasCancelled)
         }
     }
+
+    //TODO: Think about that
+//    // After a failed presentation or successful dismissal, remove the view.
+//    if ((self.presenting && !success) || (!self.presenting && success)) {
+//    [toView removeFromSuperview];
+//    }
 }

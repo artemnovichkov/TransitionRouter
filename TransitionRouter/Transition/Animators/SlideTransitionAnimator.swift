@@ -63,11 +63,6 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
     }
 }
 
-extension SlideTransitionAnimator: UIViewControllerInteractiveTransitioning {
-    
-    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {}
-}
-
 fileprivate extension UIViewController {
     
     func updateFrame(with direction: AnimationDirection, reverse: Bool = false) {

@@ -51,4 +51,12 @@ extension TransitionRouter: UIViewControllerTransitioningDelegate {
         animator.presenting = false
         return animator
     }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return self.animator.interactive ? self.animator : nil
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return self.animator.interactive ? self.animator : nil
+    }
 }

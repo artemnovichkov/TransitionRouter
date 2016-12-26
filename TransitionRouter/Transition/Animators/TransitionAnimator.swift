@@ -8,19 +8,24 @@
 
 import UIKit
 
-protocol TransitionAnimator: UIViewControllerAnimatedTransitioning {
+protocol TransitionAnimator: UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning {
     
     var duration: TimeInterval { get }
     var presenting: Bool { get set }
     var options: AnimationOptions { get set }
+    var interactive: Bool { get }
 }
 
+//MARK: - Defaults
 extension TransitionAnimator {
-    
     typealias Controllers = (fromViewController: UIViewController, toViewController: UIViewController)
     
     var duration: TimeInterval {
         return options.duration
+    }
+    
+    var interactive: Bool {
+        return false
     }
     
     //TODO: Maybe move to UIViewControllerContextTransitioning?
@@ -43,8 +48,8 @@ extension TransitionAnimator {
     }
 }
 
+//MARK: - Animations
 extension TransitionAnimator {
-    
     func animate(with context: UIViewControllerContextTransitioning, animations: @escaping () -> Swift.Void) {
         UIView.animate(withDuration: duration, delay: options.delay, options: options.option, animations: animations, completion: context.completion)
     }

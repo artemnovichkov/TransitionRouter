@@ -51,3 +51,8 @@ extension FadeTransitionAnimator: UIViewControllerAnimatedTransitioning {
     }
 }
 
+extension FadeTransitionAnimator: UIViewControllerInteractiveTransitioning {
+    
+    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {}
+}
+

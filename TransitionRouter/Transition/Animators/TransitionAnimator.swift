@@ -27,7 +27,6 @@ extension TransitionAnimator {
         return false
     }
     
-    //TODO: Maybe move to UIViewControllerContextTransitioning?
     func configure(using transitionContext: UIViewControllerContextTransitioning) -> Controllers {
         let fromViewController = transitionContext.viewController(forKey: .from)!
         let toViewController = transitionContext.viewController(forKey: .to)!
@@ -49,6 +48,7 @@ extension TransitionAnimator {
 
 //MARK: - Animations
 extension TransitionAnimator {
+    
     func animate(with context: UIViewControllerContextTransitioning, animations: @escaping () -> Swift.Void) {
         UIView.animate(withDuration: duration, delay: options.delay, options: options.option, animations: animations, completion: context.completion)
     }
@@ -61,10 +61,4 @@ extension UIViewControllerContextTransitioning {
             self.completeTransition(!self.transitionWasCancelled)
         }
     }
-
-    //TODO: Think about that
-//    // After a failed presentation or successful dismissal, remove the view.
-//    if ((self.presenting && !success) || (!self.presenting && success)) {
-//    [toView removeFromSuperview];
-//    }
 }

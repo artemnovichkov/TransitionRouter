@@ -13,9 +13,10 @@ struct AnimationOptions {
     let duration: TimeInterval
     let option: UIViewAnimationOptions
     let delay: TimeInterval
+    let percentage: CGFloat
     
     static var `default`: AnimationOptions {
-        return AnimationOptions(duration: 0.5, option: .curveEaseOut, delay: 0)
+        return AnimationOptions(duration: 0.5, option: .curveEaseOut, delay: 0, percentage: 0.5)
     }
 }
 

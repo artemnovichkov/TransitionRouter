@@ -34,6 +34,7 @@ final class TransitionRouter: NSObject {
     var interactive: Bool
     fileprivate var presentHandler: RouterHandler?
     fileprivate var updateHandler: UpdateHandler?
+    fileprivate var currentPercentage: CGFloat?
     
     var options: AnimationOptions = .default {
         willSet {
@@ -41,7 +42,7 @@ final class TransitionRouter: NSObject {
         }
     }
     
-    init(type: AnimatorType, interactive: Bool = true) {
+    init(type: AnimatorType, interactive: Bool = false) {
         let animator = type.animator
         self.interactive = interactive
         if interactive {
@@ -59,9 +60,19 @@ final class TransitionRouter: NSObject {
             if let updateHandler = updateHandler {
                 percentage = updateHandler(gestureRecognizer)
             }
+            currentPercentage = percentage
             interactiveAnimator?.update(percentage)
         case .cancelled, .ended:
-            interactiveAnimator?.finish()
+            guard let percentage = currentPercentage else {
+                interactiveAnimator?.cancel()
+                return
+            }
+            if percentage >= options.percentage {
+                interactiveAnimator?.finish()
+            }
+            else {
+                interactiveAnimator?.cancel()
+            }
         default: break
         }
     }
@@ -96,10 +107,22 @@ extension TransitionRouter: UIViewControllerInteractiveTransitioning {
 //MARK: - Recognizers
 extension TransitionRouter {
     
-    func add(_ recognizer: UIPanGestureRecognizer, presentHandler: @escaping RouterHandler, updateHandler: @escaping UpdateHandler) {
-        self.presentHandler = presentHandler
-        self.updateHandler = updateHandler
+    @discardableResult
+    func add(_ recognizer: UIPanGestureRecognizer) -> TransitionRouter {
         recognizer.addTarget(self, action: .handleGesture)
+        return self
+    }
+    
+    @discardableResult
+    func present(presentHandler: @escaping RouterHandler) -> TransitionRouter {
+        self.presentHandler = presentHandler
+        return self
+    }
+    
+    @discardableResult
+    func update(updateHandler: @escaping UpdateHandler) -> TransitionRouter {
+        self.updateHandler = updateHandler
+        return self
     }
 }
 

@@ -18,11 +18,11 @@ extension UIButton {
 }
 
 class FirstViewController: UIViewController {
-
+    
     private let topRouter = TransitionRouter(type: .top)
     private let leftRouter = TransitionRouter(type: .left)
-    private let leftInteractiveRouter = TransitionRouter(type: .left)
-    private let rightInteractiveRouter = TransitionRouter(type: .right)
+    private let leftInteractiveRouter = TransitionRouter(type: .left, interactive: true)
+    private let rightInteractiveRouter = TransitionRouter(type: .right, interactive: true)
     private let bottomRouter = TransitionRouter(type: .bottom)
     private let rightRouter = TransitionRouter(type: .right)
     private let fadeRouter = TransitionRouter(type: .custom(animator: FadeTransitionAnimator()))
@@ -55,29 +55,31 @@ class FirstViewController: UIViewController {
         
         let leftRecognizer = UIScreenEdgePanGestureRecognizer()
         leftRecognizer.edges = .left
-        leftInteractiveRouter.add(leftRecognizer, presentHandler: { router in
-            let vc = SecondViewController()
-            vc.transitioningDelegate = router
-            self.present(vc, animated: true, completion: nil)
-        }) { recognizer -> CGFloat in
-            let translation = recognizer.translation(in: recognizer.view!)
-            let d = translation.x / recognizer.view!.bounds.width * 0.5
-            print(d)
-            return d
+        leftInteractiveRouter
+            .add(leftRecognizer)
+            .present { router in
+                let vc = SecondViewController()
+                vc.transitioningDelegate = router
+                self.present(vc, animated: true, completion: nil)
+            }
+            .update { recognizer -> CGFloat in
+                let translation = recognizer.translation(in: recognizer.view!)
+                return translation.x / recognizer.view!.bounds.width * 0.5
         }
         view.addGestureRecognizer(leftRecognizer)
         
         let rightRecognizer = UIScreenEdgePanGestureRecognizer()
         rightRecognizer.edges = .right
-        rightInteractiveRouter.add(rightRecognizer, presentHandler: { router in
-            let vc = SecondViewController()
-            vc.transitioningDelegate = router
-            self.present(vc, animated: true, completion: nil)
-        }) { recognizer -> CGFloat in
-            let translation = recognizer.translation(in: recognizer.view!)
-            let d = translation.x * -1 / recognizer.view!.bounds.width * 0.5
-            print(d)
-            return d
+        rightInteractiveRouter
+            .add(rightRecognizer)
+            .present { router in
+                let vc = SecondViewController()
+                vc.transitioningDelegate = router
+                self.present(vc, animated: true, completion: nil)
+            }
+            .update { recognizer -> CGFloat in
+                let translation = recognizer.translation(in: recognizer.view!)
+                return translation.x * -1 / recognizer.view!.bounds.width * 0.5
         }
         view.addGestureRecognizer(rightRecognizer)
     }

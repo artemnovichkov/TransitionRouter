@@ -47,20 +47,19 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
         
         toViewController.updateFrame(with: direction)
         
-        UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
+        animate(with: transitionContext) { 
             fromViewController.updateFrame(with: self.direction, reverse: true)
             toViewController.center()
-        }, completion: transitionContext.completion)
+        }
     }
     
     private func dismiss(using transitionContext: UIViewControllerContextTransitioning) {
         let (fromViewController, toViewController) = configure(using: transitionContext)
         
-        
-        UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
+        animate(with: transitionContext) { 
             fromViewController.updateFrame(with: self.direction)
             toViewController.center()
-        }, completion: transitionContext.completion)
+        }
     }
 }
 
@@ -93,15 +92,5 @@ fileprivate extension UIViewController {
     
     private func right() {
         view.frame.origin.x += view.frame.size.width
-    }
-}
-
-//TODO: Move to another file
-extension UIViewControllerContextTransitioning {
-    
-    var completion: ((Bool) -> Swift.Void) {
-        return { _ in
-            self.completeTransition(true)
-        }
     }
 }

@@ -33,21 +33,21 @@ extension FadeTransitionAnimator: UIViewControllerAnimatedTransitioning {
     }
     
     private func show(using transitionContext: UIViewControllerContextTransitioning) {
-        let (_, toViewController) = configure(using: transitionContext)
+        let toViewController = configure(using: transitionContext).toViewController
         
         toViewController.view.alpha = 0
         
-        UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
+        animate(with: transitionContext) {
             toViewController.view.alpha = 1
-        }, completion: transitionContext.completion)
+        }
     }
     
     private func dismiss(using transitionContext: UIViewControllerContextTransitioning) {
-        let (fromViewController, _) = configure(using: transitionContext)
+        let fromViewController = configure(using: transitionContext).fromViewController
         
-        UIView.animate(withDuration: duration, delay: 0, options: options.option, animations: {
+        animate(with: transitionContext) {
             fromViewController.view.alpha = 0
-        }, completion: transitionContext.completion)
+        }
     }
 }
 

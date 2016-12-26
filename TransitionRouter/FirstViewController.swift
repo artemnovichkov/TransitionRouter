@@ -79,7 +79,7 @@ class FirstViewController: UIViewController {
     }
     
     func selectRightRouter() {
-        selectedRouter = fadeRouter
+        selectedRouter = rightRouter
     }
 }
 

@@ -20,7 +20,7 @@ extension TransitionAnimator {
     typealias Controllers = (fromViewController: UIViewController, toViewController: UIViewController)
     
     var duration: TimeInterval {
-        return 0.5
+        return options.duration
     }
     
     //TODO: Maybe move to UIViewControllerContextTransitioning?
@@ -40,5 +40,21 @@ extension TransitionAnimator {
         
         
         return (fromViewController, toViewController)
+    }
+}
+
+extension TransitionAnimator {
+    
+    func animate(with context: UIViewControllerContextTransitioning, animations: @escaping () -> Swift.Void) {
+        UIView.animate(withDuration: duration, delay: options.delay, options: options.option, animations: animations, completion: context.completion)
+    }
+}
+
+extension UIViewControllerContextTransitioning {
+    
+    var completion: ((Bool) -> Swift.Void) {
+        return { _ in
+            self.completeTransition(!self.transitionWasCancelled)
+        }
     }
 }

@@ -36,7 +36,7 @@ final class TransitionRouter: NSObject {
     fileprivate var interactiveAnimator: UIPercentDrivenInteractiveTransition?
     fileprivate var transitionHandler: RouterHandler?
     fileprivate var updateHandler: UpdateHandler?
-    fileprivate var currentPercentage: CGFloat?
+    private var currentPercentage: CGFloat?
     
     var options: AnimationOptions = .default {
         didSet {

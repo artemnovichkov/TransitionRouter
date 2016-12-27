@@ -20,6 +20,14 @@ let vc = SecondViewController()
 vc.transitioningDelegate = topRouter
 self.present(vc, animated: true, completion: nil)
  ```
+# Настройка
+AnimationRouter позволяет настроить свойства анимации перехода:
+* **duration:** продолжительность анимации
+* **option:** `UIViewAnimationOptions`
+* **delay:** задержка перед началом анимации
+* **percentage:** максимальный процент завершения для интерактивной анимации
+
+Параметры анимации можно изменить через свойство `options`. 
 # Интерактивные переходы
 Для реализации возможности интерактивного перехода необходимо создать роутер с параметром interactive:
 ```swift

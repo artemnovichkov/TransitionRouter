@@ -57,7 +57,7 @@ class FirstViewController: UIViewController {
         leftRecognizer.edges = .left
         leftInteractiveRouter
             .add(leftRecognizer)
-            .present { router in
+            .transition { router in
                 let vc = SecondViewController()
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true, completion: nil)
@@ -65,14 +65,14 @@ class FirstViewController: UIViewController {
             .update { recognizer -> CGFloat in
                 let translation = recognizer.translation(in: recognizer.view!)
                 return translation.x / recognizer.view!.bounds.width * 0.5
-        }
+            }
         view.addGestureRecognizer(leftRecognizer)
         
         let rightRecognizer = UIScreenEdgePanGestureRecognizer()
         rightRecognizer.edges = .right
         rightInteractiveRouter
             .add(rightRecognizer)
-            .present { router in
+            .transition { router in
                 let vc = SecondViewController()
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true, completion: nil)
@@ -80,7 +80,7 @@ class FirstViewController: UIViewController {
             .update { recognizer -> CGFloat in
                 let translation = recognizer.translation(in: recognizer.view!)
                 return translation.x * -1 / recognizer.view!.bounds.width * 0.5
-        }
+            }
         view.addGestureRecognizer(rightRecognizer)
     }
     

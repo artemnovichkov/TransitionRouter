@@ -34,7 +34,7 @@ final class TransitionRouter: NSObject {
     
     //properties for interactive transitions
     fileprivate var interactiveAnimator: UIPercentDrivenInteractiveTransition?
-    fileprivate var presentHandler: RouterHandler?
+    fileprivate var transitionHandler: RouterHandler?
     fileprivate var updateHandler: UpdateHandler?
     fileprivate var currentPercentage: CGFloat?
     
@@ -60,7 +60,7 @@ final class TransitionRouter: NSObject {
     @objc fileprivate func handleGesture(gestureRecognizer: UIPanGestureRecognizer) {
         switch gestureRecognizer.state {
         case .began:
-            presentHandler?(self)
+            transitionHandler?(self)
         case .changed:
             var percentage: CGFloat = 0
             if let updateHandler = updateHandler {
@@ -115,14 +115,14 @@ extension TransitionRouter {
     }
     
     @discardableResult
-    func present(presentHandler: @escaping RouterHandler) -> TransitionRouter {
-        self.presentHandler = presentHandler
+    func transition(handler: @escaping RouterHandler) -> TransitionRouter {
+        self.transitionHandler = handler
         return self
     }
     
     @discardableResult
-    func update(updateHandler: @escaping UpdateHandler) -> TransitionRouter {
-        self.updateHandler = updateHandler
+    func update(handler: @escaping UpdateHandler) -> TransitionRouter {
+        self.updateHandler = handler
         return self
     }
 }

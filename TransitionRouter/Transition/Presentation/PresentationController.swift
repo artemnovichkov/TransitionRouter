@@ -10,8 +10,7 @@ import UIKit
 
 class PresentationController: UIPresentationController {
     
-    
-    override func presentationTransitionWillBegin() {
-        
+    override var shouldRemovePresentersView: Bool {
+        return false
     }
 }

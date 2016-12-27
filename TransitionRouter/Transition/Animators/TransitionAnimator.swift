@@ -25,10 +25,11 @@ extension TransitionAnimator {
         let toViewController = transitionContext.viewController(forKey: .to)!
         let containerView = transitionContext.containerView
         
+        //TODO: Think about removing of view from window hierarchy
         if presenting {
             containerView.addSubview(toViewController.view)
         }
-        
+    
         return (fromViewController, toViewController)
     }
     

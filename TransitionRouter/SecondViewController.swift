@@ -9,25 +9,22 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-
-    let label: UILabel = {
-        let label = UILabel()
-        label.text = "Second View Controller"
-        return label
-    }()
+    
+    private let button: UIButton = .custom(with: "Dismiss")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
-        view.addSubview(label)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.dismiss(animated: true)
-        }
+        view.addSubview(button)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+    }
+    
+    func buttonAction() {
+        self.dismiss(animated: true)
     }
     
     override func viewDidLayoutSubviews() {
-        label.sizeToFit()
-        label.center = view.center
+        button.center = view.center
+        button.frame.size = CGSize(width: 100, height: 20)
     }
 }

@@ -101,11 +101,11 @@ extension TransitionRouter: UIViewControllerTransitioningDelegate {
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactiveAnimator
+        return nil
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PresentationController(presentedViewController: presented, presenting: presenting)
+        return nil
     }
 }
 

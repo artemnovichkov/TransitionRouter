@@ -22,7 +22,7 @@ class SecondViewController: UIViewController {
         view.addSubview(label)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true)
         }
     }
     

@@ -26,11 +26,9 @@ extension TransitionAnimator {
         let containerView = transitionContext.containerView
         
         if presenting {
-            containerView.addSubview(fromViewController.view)
             containerView.addSubview(toViewController.view)
         }
         else {
-            containerView.addSubview(toViewController.view)
             containerView.addSubview(fromViewController.view)
         }
         

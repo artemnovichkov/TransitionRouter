@@ -61,7 +61,7 @@ class FirstViewController: UIViewController {
             .transition { router in
                 let vc = SecondViewController()
                 vc.transitioningDelegate = router
-                self.present(vc, animated: true, completion: nil)
+                self.present(vc, animated: true)
             }
             .update { recognizer -> CGFloat in
                 let translation = recognizer.translation(in: recognizer.view!)
@@ -76,7 +76,7 @@ class FirstViewController: UIViewController {
             .transition { router in
                 let vc = SecondViewController()
                 vc.transitioningDelegate = router
-                self.present(vc, animated: true, completion: nil)
+                self.present(vc, animated: true)
             }
             .update { recognizer -> CGFloat in
                 let translation = recognizer.translation(in: recognizer.view!)

@@ -15,6 +15,7 @@
 		0651E2491DF70433001199DB /* TransitionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E2451DF70433001199DB /* TransitionRouter.swift */; };
 		0651E24B1DF706C8001199DB /* SlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E24A1DF706C8001199DB /* SlideTransitionAnimator.swift */; };
 		0651E24D1DF70776001199DB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E24C1DF70776001199DB /* SecondViewController.swift */; };
+		067A2B811E122FBB00EF6DA5 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A2B801E122FBB00EF6DA5 /* PresentationController.swift */; };
 		06A0F61E1DFC2E14001DB363 /* FadeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0F61D1DFC2E14001DB363 /* FadeTransitionAnimator.swift */; };
 		06EEF1071E120B1900BCE920 /* AnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEF1061E120B1900BCE920 /* AnimationOptions.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		0651E2451DF70433001199DB /* TransitionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRouter.swift; sourceTree = "<group>"; };
 		0651E24A1DF706C8001199DB /* SlideTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionAnimator.swift; sourceTree = "<group>"; };
 		0651E24C1DF70776001199DB /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		067A2B801E122FBB00EF6DA5 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		06A0F61D1DFC2E14001DB363 /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
 		06EEF1061E120B1900BCE920 /* AnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationOptions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 				0651E2451DF70433001199DB /* TransitionRouter.swift */,
 				0651E2411DF70433001199DB /* Animators */,
 				06EEF1051E120B1900BCE920 /* AnimationOptions */,
+				067A2B7F1E122FAA00EF6DA5 /* Presentation */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -93,6 +96,14 @@
 				06A0F61D1DFC2E14001DB363 /* FadeTransitionAnimator.swift */,
 			);
 			path = Animators;
+			sourceTree = "<group>";
+		};
+		067A2B7F1E122FAA00EF6DA5 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				067A2B801E122FBB00EF6DA5 /* PresentationController.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		06EEF1051E120B1900BCE920 /* AnimationOptions */ = {
@@ -176,6 +187,7 @@
 			files = (
 				0651E22F1DF70398001199DB /* FirstViewController.swift in Sources */,
 				0651E2491DF70433001199DB /* TransitionRouter.swift in Sources */,
+				067A2B811E122FBB00EF6DA5 /* PresentationController.swift in Sources */,
 				0651E24B1DF706C8001199DB /* SlideTransitionAnimator.swift in Sources */,
 				0651E24D1DF70776001199DB /* SecondViewController.swift in Sources */,
 				06A0F61E1DFC2E14001DB363 /* FadeTransitionAnimator.swift in Sources */,

@@ -30,6 +30,7 @@ class FirstViewController: UIViewController {
     private var selectedRouter: TransitionRouter? {
         didSet {
             let vc = SecondViewController()
+            vc.modalPresentationStyle = .custom
             vc.transitioningDelegate = selectedRouter
             self.present(vc, animated: true, completion: nil)
         }

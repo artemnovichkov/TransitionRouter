@@ -15,8 +15,8 @@
 		0651E2491DF70433001199DB /* TransitionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E2451DF70433001199DB /* TransitionRouter.swift */; };
 		0651E24B1DF706C8001199DB /* SlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E24A1DF706C8001199DB /* SlideTransitionAnimator.swift */; };
 		0651E24D1DF70776001199DB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651E24C1DF70776001199DB /* SecondViewController.swift */; };
-		06A0F61C1DFC2052001DB363 /* AnimationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0F61B1DFC2052001DB363 /* AnimationOption.swift */; };
 		06A0F61E1DFC2E14001DB363 /* FadeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0F61D1DFC2E14001DB363 /* FadeTransitionAnimator.swift */; };
+		06EEF1071E120B1900BCE920 /* AnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEF1061E120B1900BCE920 /* AnimationOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		0651E2451DF70433001199DB /* TransitionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRouter.swift; sourceTree = "<group>"; };
 		0651E24A1DF706C8001199DB /* SlideTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionAnimator.swift; sourceTree = "<group>"; };
 		0651E24C1DF70776001199DB /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		06A0F61B1DFC2052001DB363 /* AnimationOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationOption.swift; sourceTree = "<group>"; };
 		06A0F61D1DFC2E14001DB363 /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
+		06EEF1061E120B1900BCE920 /* AnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationOptions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 			children = (
 				0651E2451DF70433001199DB /* TransitionRouter.swift */,
 				0651E2411DF70433001199DB /* Animators */,
-				06A0F61A1DFC2042001DB363 /* AnimationOption */,
+				06EEF1051E120B1900BCE920 /* AnimationOptions */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -95,12 +95,12 @@
 			path = Animators;
 			sourceTree = "<group>";
 		};
-		06A0F61A1DFC2042001DB363 /* AnimationOption */ = {
+		06EEF1051E120B1900BCE920 /* AnimationOptions */ = {
 			isa = PBXGroup;
 			children = (
-				06A0F61B1DFC2052001DB363 /* AnimationOption.swift */,
+				06EEF1061E120B1900BCE920 /* AnimationOptions.swift */,
 			);
-			path = AnimationOption;
+			path = AnimationOptions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +130,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Artem Novichkov";
 				TargetAttributes = {
 					0651E2281DF70397001199DB = {
@@ -177,9 +177,9 @@
 				0651E22F1DF70398001199DB /* FirstViewController.swift in Sources */,
 				0651E2491DF70433001199DB /* TransitionRouter.swift in Sources */,
 				0651E24B1DF706C8001199DB /* SlideTransitionAnimator.swift in Sources */,
-				06A0F61C1DFC2052001DB363 /* AnimationOption.swift in Sources */,
 				0651E24D1DF70776001199DB /* SecondViewController.swift in Sources */,
 				06A0F61E1DFC2E14001DB363 /* FadeTransitionAnimator.swift in Sources */,
+				06EEF1071E120B1900BCE920 /* AnimationOptions.swift in Sources */,
 				0651E2481DF70433001199DB /* TransitionAnimator.swift in Sources */,
 				0651E22D1DF70398001199DB /* AppDelegate.swift in Sources */,
 			);
@@ -217,6 +217,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -266,6 +267,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -295,6 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TransitionRouter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.artemnovichkov.TransitionRouter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -307,6 +310,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TransitionRouter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.artemnovichkov.TransitionRouter;
 				PRODUCT_NAME = "$(TARGET_NAME)";

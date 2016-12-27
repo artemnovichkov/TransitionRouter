@@ -45,13 +45,13 @@ class FirstViewController: UIViewController {
         view.backgroundColor = .red
         
         view.addSubview(topButton)
-        topButton.addTarget(self, action: #selector(FirstViewController.selectTopRouter), for: .touchUpInside)
+        topButton.addTarget(self, action: #selector(selectTopRouter), for: .touchUpInside)
         view.addSubview(leftButton)
-        leftButton.addTarget(self, action: #selector(FirstViewController.selectLeftRouter), for: .touchUpInside)
+        leftButton.addTarget(self, action: #selector(selectLeftRouter), for: .touchUpInside)
         view.addSubview(bottomButton)
-        bottomButton.addTarget(self, action: #selector(FirstViewController.selectBottomRouter), for: .touchUpInside)
+        bottomButton.addTarget(self, action: #selector(selectBottomRouter), for: .touchUpInside)
         view.addSubview(rightButton)
-        rightButton.addTarget(self, action: #selector(FirstViewController.selectRightRouter), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(selectRightRouter), for: .touchUpInside)
         
         let leftRecognizer = UIScreenEdgePanGestureRecognizer()
         leftRecognizer.edges = .left

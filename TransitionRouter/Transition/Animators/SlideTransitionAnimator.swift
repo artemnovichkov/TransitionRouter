@@ -29,7 +29,7 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
     private typealias AnimateTransitionHandler = (UIViewControllerContextTransitioning) -> ()
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        return options.duration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

@@ -30,17 +30,21 @@ typealias UpdateHandler = ((UIPanGestureRecognizer) -> CGFloat)
 final class TransitionRouter: NSObject {
     
     fileprivate var animator: TransitionAnimator
-    fileprivate var interactiveAnimator: UIPercentDrivenInteractiveTransition?
     var interactive: Bool
+    
+    //properties for interactive transitions
+    fileprivate var interactiveAnimator: UIPercentDrivenInteractiveTransition?
     fileprivate var presentHandler: RouterHandler?
     fileprivate var updateHandler: UpdateHandler?
     fileprivate var currentPercentage: CGFloat?
     
     var options: AnimationOptions = .default {
-        willSet {
-            animator.options = newValue
+        didSet {
+            animator.options = options
         }
     }
+    
+    //MARK: - Filecycle
     
     init(type: AnimatorType, interactive: Bool = false) {
         let animator = type.animator
@@ -50,6 +54,8 @@ final class TransitionRouter: NSObject {
         }
         self.animator = animator
     }
+    
+    //MARK: - Actions
     
     @objc fileprivate func handleGesture(gestureRecognizer: UIPanGestureRecognizer) {
         switch gestureRecognizer.state {
@@ -78,8 +84,8 @@ final class TransitionRouter: NSObject {
     }
 }
 
+//MARK: - UIViewControllerTransitioningDelegate
 extension TransitionRouter: UIViewControllerTransitioningDelegate {
-    
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.presenting = true
         return animator
@@ -97,11 +103,6 @@ extension TransitionRouter: UIViewControllerTransitioningDelegate {
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveAnimator
     }
-}
-
-extension TransitionRouter: UIViewControllerInteractiveTransitioning {
-    
-    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {}
 }
 
 //MARK: - Recognizers
@@ -126,6 +127,7 @@ extension TransitionRouter {
     }
 }
 
+//MARK: - Selector
 fileprivate extension Selector {
     static let handleGesture = #selector(TransitionRouter.handleGesture)
 }

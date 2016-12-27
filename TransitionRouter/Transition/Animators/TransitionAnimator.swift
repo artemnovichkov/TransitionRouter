@@ -10,22 +10,14 @@ import UIKit
 
 protocol TransitionAnimator: UIViewControllerAnimatedTransitioning {
     
-    var duration: TimeInterval { get }
     var presenting: Bool { get set }
     var options: AnimationOptions { get set }
 }
 
+typealias Controllers = (fromViewController: UIViewController, toViewController: UIViewController)
+
 //MARK: - Defaults
 extension TransitionAnimator {
-    typealias Controllers = (fromViewController: UIViewController, toViewController: UIViewController)
-    
-    var duration: TimeInterval {
-        return options.duration
-    }
-    
-    var interactive: Bool {
-        return false
-    }
     
     func configure(using transitionContext: UIViewControllerContextTransitioning) -> Controllers {
         let fromViewController = transitionContext.viewController(forKey: .from)!
@@ -41,16 +33,11 @@ extension TransitionAnimator {
             containerView.addSubview(fromViewController.view)
         }
         
-        
         return (fromViewController, toViewController)
     }
-}
-
-//MARK: - Animations
-extension TransitionAnimator {
     
     func animate(with context: UIViewControllerContextTransitioning, animations: @escaping () -> Swift.Void) {
-        UIView.animate(withDuration: duration, delay: options.delay, options: options.option, animations: animations, completion: context.completion)
+        UIView.animate(withDuration: options.duration, delay: options.delay, options: options.option, animations: animations, completion: context.completion)
     }
 }
 

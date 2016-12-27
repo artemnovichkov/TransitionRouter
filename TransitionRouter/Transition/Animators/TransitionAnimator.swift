@@ -15,6 +15,7 @@ protocol TransitionAnimator: UIViewControllerAnimatedTransitioning {
 }
 
 typealias Controllers = (fromViewController: UIViewController, toViewController: UIViewController)
+typealias AnimateTransitionHandler = (UIViewControllerContextTransitioning) -> ()
 
 //MARK: - Defaults
 extension TransitionAnimator {

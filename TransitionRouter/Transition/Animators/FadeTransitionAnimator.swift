@@ -16,8 +16,6 @@ class FadeTransitionAnimator: NSObject, TransitionAnimator {
 
 extension FadeTransitionAnimator: UIViewControllerAnimatedTransitioning {
     
-    private typealias AnimateTransitionHandler = (UIViewControllerContextTransitioning) -> ()
-    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return options.duration
     }

@@ -48,7 +48,7 @@ class FirstViewController: UIViewController {
         rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
         view.addSubview(rightButton)
         
-        //        Uncomment one of configuration for testing
+        //Uncomment one of configuration for testing
         //        configureTopInteractiveRouter()
         //        configureLeftInteractiveRouter()
         //        configureBottomInteractiveRouter()
@@ -79,7 +79,6 @@ class FirstViewController: UIViewController {
         let leftRecognizer = UIScreenEdgePanGestureRecognizer()
         leftRecognizer.edges = .left
         interactiveRouter = TransitionRouter(type: .left, interactive: true)
-        interactiveRouter
             .add(leftRecognizer)
             .transition { [unowned self] router in
                 let vc = ColorViewController(color: .green)
@@ -92,7 +91,6 @@ class FirstViewController: UIViewController {
     func configureTopInteractiveRouter() {
         let topRecognizer = UIPanGestureRecognizer()
         interactiveRouter = TransitionRouter(type: .top, interactive: true)
-        interactiveRouter
             .add(topRecognizer)
             .transition { [unowned self] router in
                 let vc = ColorViewController(color: .yellow)
@@ -105,7 +103,6 @@ class FirstViewController: UIViewController {
     func configureBottomInteractiveRouter() {
         let bottomRecognizer = UIPanGestureRecognizer()
         interactiveRouter = TransitionRouter(type: .bottom, interactive: true)
-        interactiveRouter
             .add(bottomRecognizer)
             .transition { [unowned self] router in
                 let vc = ColorViewController(color: .brown)
@@ -119,7 +116,6 @@ class FirstViewController: UIViewController {
         let rightRecognizer = UIScreenEdgePanGestureRecognizer()
         rightRecognizer.edges = .right
         interactiveRouter = TransitionRouter(type: .right, interactive: true)
-        interactiveRouter
             .add(rightRecognizer)
             .transition { [unowned self] router in
                 let vc = ColorViewController(color: .orange)

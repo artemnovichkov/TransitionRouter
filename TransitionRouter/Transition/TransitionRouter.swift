@@ -30,7 +30,9 @@ typealias UpdateHandler = ((UIPanGestureRecognizer) -> CGFloat)
 final class TransitionRouter: NSObject {
     
     fileprivate var animator: TransitionAnimator
+    /// If true, an interactive animator will be use when presenting a view controller.
     var interactive: Bool
+    /// Type of animator
     let type: AnimatorType
     
     //properties for interactive transitions
@@ -39,14 +41,20 @@ final class TransitionRouter: NSObject {
     fileprivate var updateHandler: UpdateHandler?
     private var currentPercentage: CGFloat?
     
+    /// Options for transition animation
     var options: AnimationOptions = .default {
         didSet {
             animator.options = options
         }
     }
     
-    //MARK: - Filecycle
+    //MARK: - Lilecycle
     
+    /// Returns an object initialized with type and interactive option.
+    ///
+    /// - Parameters:
+    ///   - type: Type of animator
+    ///   - interactive: If true, an interactive animator will be use when presenting a view controller. Default is false
     init(type: AnimatorType, interactive: Bool = false) {
         self.type = type
         let animator = type.animator
@@ -87,6 +95,7 @@ final class TransitionRouter: NSObject {
 
 //MARK: - UIViewControllerTransitioningDelegate
 extension TransitionRouter: UIViewControllerTransitioningDelegate {
+    
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.presenting = true
         return animator
@@ -105,18 +114,30 @@ extension TransitionRouter: UIViewControllerTransitioningDelegate {
 //MARK: - Recognizers
 extension TransitionRouter {
     
+    /// Adds a target and an action to the router for interactive animation.
+    ///
+    /// - Parameter recognizer:
+    /// - Returns: A router used as target of recognizer.
     @discardableResult
     func add(_ recognizer: UIPanGestureRecognizer) -> TransitionRouter {
         recognizer.addTarget(self, action: .handleGesture)
         return self
     }
     
+    /// You must present or dismiss your view controller.
+    ///
+    /// - Parameter handler: You must use the router in handler parameter as `transitioningDelegate`
+    /// - Returns: A router with transition handler.
     @discardableResult
     func transition(handler: @escaping RouterHandler) -> TransitionRouter {
         transitionHandler = handler
         return self
     }
     
+    /// Passes handler for update of animation progress. If you didn't set it, the router will use default handler.
+    ///
+    /// - Parameter handler: You must return value showed progress of animation.
+    /// - Returns: A router with update handler.
     @discardableResult
     func update(handler: @escaping UpdateHandler) -> TransitionRouter {
         updateHandler = handler

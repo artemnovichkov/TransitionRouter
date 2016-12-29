@@ -99,10 +99,6 @@ extension TransitionRouter: UIViewControllerTransitioningDelegate {
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveAnimator
     }
-    
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactiveAnimator
-    }
 }
 
 //MARK: - Recognizers

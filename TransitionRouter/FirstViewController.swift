@@ -72,6 +72,10 @@ class FirstViewController: UIViewController {
         }
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     //MARK: - Configuration
     
     func configureLeftInteractiveRouter() {

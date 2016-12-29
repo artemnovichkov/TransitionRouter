@@ -142,7 +142,7 @@ extension TransitionRouter {
             case .left: test = Percent(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: 1)
             case .bottom: test = Percent(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: -1)
             case .right: test = Percent(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: -1)
-            default: break
+            case .custom: break //TODO: Add warning to add update handler
             }
             return test.result
         }

@@ -19,7 +19,9 @@ extension UIButton {
 
 class FirstViewController: UIViewController {
     
+    private let topInteractiveRouter = TransitionRouter(type: .top, interactive: true)
     private let leftInteractiveRouter = TransitionRouter(type: .left, interactive: true)
+    private let bottomInteractiveRouter = TransitionRouter(type: .bottom, interactive: true)
     private let rightInteractiveRouter = TransitionRouter(type: .right, interactive: true)
     
     private var selectedRouter: TransitionRouter? {
@@ -50,7 +52,9 @@ class FirstViewController: UIViewController {
         rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
         view.addSubview(rightButton)
         
+        configureTopInteractiveRouter()
         configureLeftInteractiveRouter()
+        configureBottomInteractiveRouter()
         configureRightInteractiveRouter()
     }
     
@@ -79,12 +83,32 @@ class FirstViewController: UIViewController {
                 let vc = SecondViewController()
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true)
-            }
-            .update { recognizer -> CGFloat in
-                let translation = recognizer.translation(in: recognizer.view!)
-                return translation.x / recognizer.view!.bounds.width * 0.5
         }
         view.addGestureRecognizer(leftRecognizer)
+    }
+    
+    func configureTopInteractiveRouter() {
+        let topRecognizer = UIPanGestureRecognizer()
+        topInteractiveRouter
+            .add(topRecognizer)
+            .transition { [unowned self] router in
+                let vc = SecondViewController()
+                vc.transitioningDelegate = router
+                self.present(vc, animated: true)
+        }
+        view.addGestureRecognizer(topRecognizer)
+    }
+    
+    func configureBottomInteractiveRouter() {
+        let bottomRecognizer = UIPanGestureRecognizer()
+        bottomInteractiveRouter
+            .add(bottomRecognizer)
+            .transition { [unowned self] router in
+                let vc = SecondViewController()
+                vc.transitioningDelegate = router
+                self.present(vc, animated: true)
+        }
+        view.addGestureRecognizer(bottomRecognizer)
     }
     
     func configureRightInteractiveRouter() {
@@ -96,10 +120,6 @@ class FirstViewController: UIViewController {
                 let vc = SecondViewController()
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true)
-            }
-            .update { recognizer -> CGFloat in
-                let translation = recognizer.translation(in: recognizer.view!)
-                return translation.x / recognizer.view!.bounds.width * 0.5  * -1
         }
         view.addGestureRecognizer(rightRecognizer)
     }

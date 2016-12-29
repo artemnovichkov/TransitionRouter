@@ -31,6 +31,7 @@ final class TransitionRouter: NSObject {
     
     fileprivate var animator: TransitionAnimator
     var interactive: Bool
+    let type: AnimatorType
     
     //properties for interactive transitions
     fileprivate var interactiveAnimator: UIPercentDrivenInteractiveTransition?
@@ -47,6 +48,7 @@ final class TransitionRouter: NSObject {
     //MARK: - Filecycle
     
     init(type: AnimatorType, interactive: Bool = false) {
+        self.type = type
         let animator = type.animator
         self.interactive = interactive
         if interactive {
@@ -63,9 +65,8 @@ final class TransitionRouter: NSObject {
             transitionHandler?(self)
         case .changed:
             var percentage: CGFloat = 0
-            if let updateHandler = updateHandler {
-                percentage = updateHandler(gestureRecognizer)
-            }
+            let updateHandler = self.updateHandler ?? defaultUpdateHandler()
+            percentage = updateHandler(gestureRecognizer)
             currentPercentage = percentage
             interactiveAnimator?.update(percentage)
         case .cancelled, .ended:
@@ -120,6 +121,31 @@ extension TransitionRouter {
     func update(handler: @escaping UpdateHandler) -> TransitionRouter {
         updateHandler = handler
         return self
+    }
+    
+    struct Percent {
+        let translation: CGFloat
+        let maxValue: CGFloat
+        let coefficient: CGFloat
+        
+        var result: CGFloat {
+            return translation / maxValue * 0.5 * coefficient
+        }
+    }
+    
+    fileprivate func defaultUpdateHandler() -> UpdateHandler {
+        return { [unowned self] recognizer -> CGFloat in
+            let translation = recognizer.translation(in: recognizer.view!)
+            var test: Percent!
+            switch self.type {
+            case .top: test = Percent(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: 1)
+            case .left: test = Percent(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: 1)
+            case .bottom: test = Percent(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: -1)
+            case .right: test = Percent(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: -1)
+            default: break
+            }
+            return test.result
+        }
     }
 }
 

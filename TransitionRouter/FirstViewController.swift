@@ -19,11 +19,6 @@ extension UIButton {
 
 class FirstViewController: UIViewController {
     
-    private let topInteractiveRouter = TransitionRouter(type: .top, interactive: true)
-    private let leftInteractiveRouter = TransitionRouter(type: .left, interactive: true)
-    private let bottomInteractiveRouter = TransitionRouter(type: .bottom, interactive: true)
-    private let rightInteractiveRouter = TransitionRouter(type: .right, interactive: true)
-    
     private var selectedRouter: TransitionRouter? {
         didSet {
             let vc = ColorViewController(color: .blue)
@@ -31,6 +26,7 @@ class FirstViewController: UIViewController {
             present(vc, animated: true)
         }
     }
+    private var interactiveRouter: TransitionRouter!
     
     private let topButton: UIButton = .custom(with: "Top")
     private let leftButton: UIButton = .custom(with: "Left")
@@ -52,9 +48,10 @@ class FirstViewController: UIViewController {
         rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
         view.addSubview(rightButton)
         
-//        configureTopInteractiveRouter()
-        configureLeftInteractiveRouter()
-//        configureBottomInteractiveRouter()
+        //        Uncomment one of configuration for testing
+        //        configureTopInteractiveRouter()
+        //        configureLeftInteractiveRouter()
+        //        configureBottomInteractiveRouter()
         configureRightInteractiveRouter()
     }
     
@@ -81,7 +78,8 @@ class FirstViewController: UIViewController {
     func configureLeftInteractiveRouter() {
         let leftRecognizer = UIScreenEdgePanGestureRecognizer()
         leftRecognizer.edges = .left
-        leftInteractiveRouter
+        interactiveRouter = TransitionRouter(type: .left, interactive: true)
+        interactiveRouter
             .add(leftRecognizer)
             .transition { [unowned self] router in
                 let vc = ColorViewController(color: .green)
@@ -93,7 +91,8 @@ class FirstViewController: UIViewController {
     
     func configureTopInteractiveRouter() {
         let topRecognizer = UIPanGestureRecognizer()
-        topInteractiveRouter
+        interactiveRouter = TransitionRouter(type: .top, interactive: true)
+        interactiveRouter
             .add(topRecognizer)
             .transition { [unowned self] router in
                 let vc = ColorViewController(color: .yellow)
@@ -105,7 +104,8 @@ class FirstViewController: UIViewController {
     
     func configureBottomInteractiveRouter() {
         let bottomRecognizer = UIPanGestureRecognizer()
-        bottomInteractiveRouter
+        interactiveRouter = TransitionRouter(type: .bottom, interactive: true)
+        interactiveRouter
             .add(bottomRecognizer)
             .transition { [unowned self] router in
                 let vc = ColorViewController(color: .brown)
@@ -118,7 +118,8 @@ class FirstViewController: UIViewController {
     func configureRightInteractiveRouter() {
         let rightRecognizer = UIScreenEdgePanGestureRecognizer()
         rightRecognizer.edges = .right
-        rightInteractiveRouter
+        interactiveRouter = TransitionRouter(type: .right, interactive: true)
+        interactiveRouter
             .add(rightRecognizer)
             .transition { [unowned self] router in
                 let vc = ColorViewController(color: .orange)

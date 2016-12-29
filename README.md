@@ -1,7 +1,7 @@
-# AnimationRouter
-AnimationRouter поможет вам быстро и красиво реализовать кастомные переходы между контроллерами. Интерактивный прототип можно посмотреть [здесь](https://appetize.io/embed/4w292ufed47tfgeuq9ge9p7ce8?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
+# TransitionRouter
+TransitionRouter поможет вам быстро и красиво реализовать кастомные переходы между контроллерами. Интерактивный прототип можно посмотреть [здесь](https://appetize.io/embed/4w292ufed47tfgeuq9ge9p7ce8?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
 # Использование
-Для того, чтобы использовать AnimationRouter, необходимо создать роутер с одним из существующих типов перехода, например:
+Для того, чтобы использовать `TransitionRouter`, необходимо создать роутер с одним из существующих типов перехода, например:
 
 ```swift
 let topRouter = TransitionRouter(type: .top)

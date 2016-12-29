@@ -116,13 +116,13 @@ extension TransitionRouter {
     
     @discardableResult
     func transition(handler: @escaping RouterHandler) -> TransitionRouter {
-        self.transitionHandler = handler
+        transitionHandler = handler
         return self
     }
     
     @discardableResult
     func update(handler: @escaping UpdateHandler) -> TransitionRouter {
-        self.updateHandler = handler
+        updateHandler = handler
         return self
     }
 }

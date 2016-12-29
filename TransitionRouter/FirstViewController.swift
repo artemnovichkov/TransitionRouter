@@ -31,7 +31,7 @@ class FirstViewController: UIViewController {
         didSet {
             let vc = SecondViewController()
             vc.transitioningDelegate = selectedRouter
-            self.present(vc, animated: true, completion: nil)
+            present(vc, animated: true)
         }
     }
     
@@ -57,7 +57,7 @@ class FirstViewController: UIViewController {
         leftRecognizer.edges = .left
         leftInteractiveRouter
             .add(leftRecognizer)
-            .transition { router in
+            .transition { [unowned self] router in
                 let vc = SecondViewController()
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true)
@@ -72,7 +72,7 @@ class FirstViewController: UIViewController {
         rightRecognizer.edges = .right
         rightInteractiveRouter
             .add(rightRecognizer)
-            .transition { router in
+            .transition { [unowned self] router in
                 let vc = SecondViewController()
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true)

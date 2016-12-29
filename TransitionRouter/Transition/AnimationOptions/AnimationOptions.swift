@@ -13,7 +13,7 @@ struct AnimationOptions {
     let duration: TimeInterval
     let option: UIViewAnimationOptions
     let delay: TimeInterval
-    /// Max value for interactive transition finish
+    /// Max value for interactive transition finishing
     let percentage: CGFloat
     
     static var `default`: AnimationOptions {

@@ -44,15 +44,18 @@ let leftInteractiveRouter = TransitionRouter(type: .left, interactive: true)
 let leftRecognizer = UIScreenEdgePanGestureRecognizer()
 leftRecognizer.edges = .left
 leftInteractiveRouter
-            .add(leftRecognizer)
-            .present { router in
-                let vc = SecondViewController()
-                vc.transitioningDelegate = router
-                self.present(vc, animated: true, completion: nil)
-            }
-            .update { recognizer -> CGFloat in
-                let translation = recognizer.translation(in: recognizer.view!)
-                return translation.x / recognizer.view!.bounds.width * 0.5
-        }
+    .add(leftRecognizer)
+    .transition { [unowned self] router in
+        let vc = ColorViewController(color: .green)
+        vc.transitioningDelegate = router
+        self.present(vc, animated: true)
+    }
 view.addGestureRecognizer(leftRecognizer)
+  ```
+  Если вы хотите самостоятельно управлять прогрессом перехода, необходимо настроить роутер следующим образом:
+ ```swift
+leftInteractiveRouter.update { recognizer -> CGFloat in
+    let translation = recognizer.translation(in: recognizer.view!)
+    return translation.x / recognizer.view!.bounds.width * 0.5
+}
   ```

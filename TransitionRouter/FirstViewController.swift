@@ -19,13 +19,8 @@ extension UIButton {
 
 class FirstViewController: UIViewController {
     
-    private let topRouter = TransitionRouter(type: .top)
-    private let leftRouter = TransitionRouter(type: .left)
     private let leftInteractiveRouter = TransitionRouter(type: .left, interactive: true)
     private let rightInteractiveRouter = TransitionRouter(type: .right, interactive: true)
-    private let bottomRouter = TransitionRouter(type: .bottom)
-    private let rightRouter = TransitionRouter(type: .right)
-    private let fadeRouter = TransitionRouter(type: .custom(animator: FadeTransitionAnimator()))
     
     private var selectedRouter: TransitionRouter? {
         didSet {
@@ -45,13 +40,13 @@ class FirstViewController: UIViewController {
         view.backgroundColor = .red
         
         view.addSubview(topButton)
-        topButton.addTarget(self, action: #selector(selectTopRouter), for: .touchUpInside)
+        topButton.addTarget(self, action: #selector(topAction), for: .touchUpInside)
         view.addSubview(leftButton)
-        leftButton.addTarget(self, action: #selector(selectLeftRouter), for: .touchUpInside)
+        leftButton.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
         view.addSubview(bottomButton)
-        bottomButton.addTarget(self, action: #selector(selectBottomRouter), for: .touchUpInside)
+        bottomButton.addTarget(self, action: #selector(bottomAction), for: .touchUpInside)
         view.addSubview(rightButton)
-        rightButton.addTarget(self, action: #selector(selectRightRouter), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
         
         let leftRecognizer = UIScreenEdgePanGestureRecognizer()
         leftRecognizer.edges = .left
@@ -79,7 +74,7 @@ class FirstViewController: UIViewController {
             }
             .update { recognizer -> CGFloat in
                 let translation = recognizer.translation(in: recognizer.view!)
-                return translation.x * -1 / recognizer.view!.bounds.width * 0.5
+                return translation.x / recognizer.view!.bounds.width * 0.5  * -1
             }
         view.addGestureRecognizer(rightRecognizer)
     }
@@ -98,20 +93,22 @@ class FirstViewController: UIViewController {
         }
     }
     
-    func selectTopRouter() {
-        selectedRouter = topRouter
+    //MARK: - Actions
+    
+    func topAction() {
+        selectedRouter = TransitionRouter(type: .top)
     }
     
-    func selectLeftRouter() {
-        selectedRouter = leftRouter
+    func leftAction() {
+        selectedRouter = TransitionRouter(type: .left)
     }
     
-    func selectBottomRouter() {
-        selectedRouter = bottomRouter
+    func bottomAction() {
+        selectedRouter = TransitionRouter(type: .bottom)
     }
     
-    func selectRightRouter() {
-        selectedRouter = rightRouter
+    func rightAction() {
+        selectedRouter = TransitionRouter(type: .right)
     }
 }
 

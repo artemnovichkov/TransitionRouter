@@ -1,5 +1,5 @@
 # AnimationRouter
-AnimationRouter поможет вам быстро и красиво реализовать кастомные переходы между контроллерами. Интерактивный прототип можно посмотреть [тут](https://appetize.io/embed/4w292ufed47tfgeuq9ge9p7ce8?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
+AnimationRouter поможет вам быстро и красиво реализовать кастомные переходы между контроллерами. Интерактивный прототип можно посмотреть [здесь](https://appetize.io/embed/4w292ufed47tfgeuq9ge9p7ce8?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
 # Использование
 Для того, чтобы использовать AnimationRouter, необходимо создать роутер с одним из существующих типов перехода, например:
 
@@ -17,15 +17,16 @@ let fadeRouter = TransitionRouter(type: .custom(animator: FadeTransitionAnimator
 
 ```swift
 let vc = SecondViewController()
-vc.transitioningDelegate = topRouter
-self.present(vc, animated: true, completion: nil)
+vc.transitioningDelegate = selectedRouter
+present(vc, animated: true)
  ```
+ **Внимание!** У вас должна быть сильная ссылка на роутер.
 # Настройка
 AnimationRouter позволяет настроить свойства анимации перехода:
 * **duration:** продолжительность анимации
 * **option:** `UIViewAnimationOptions`
 * **delay:** задержка перед началом анимации
-* **percentage:** максимальный процент завершения для интерактивной анимации
+* **percentage:** максимальное значение для завершения интерактивной анимации
 
 Параметры анимации можно изменить через свойство `options`. 
 # Интерактивные переходы

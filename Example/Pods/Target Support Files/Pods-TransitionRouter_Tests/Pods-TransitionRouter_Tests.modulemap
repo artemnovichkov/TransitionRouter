@@ -1,0 +1,6 @@
+framework module Pods_TransitionRouter_Tests {
+  umbrella header "Pods-TransitionRouter_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

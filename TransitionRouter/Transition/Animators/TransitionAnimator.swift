@@ -29,14 +29,14 @@ extension TransitionAnimator {
         return (fromViewController, toViewController)
     }
     
-    func animate(with context: UIViewControllerContextTransitioning, animations: @escaping () -> Swift.Void) {
+    func animate(with context: UIViewControllerContextTransitioning, animations: @escaping () -> Void) {
         UIView.animate(withDuration: options.duration, delay: options.delay, options: options.option, animations: animations, completion: context.completion)
     }
 }
 
 extension UIViewControllerContextTransitioning {
     
-    var completion: ((Bool) -> Swift.Void) {
+    var completion: ((Bool) -> Void) {
         return { _ in
             self.completeTransition(!self.transitionWasCancelled)
         }

@@ -26,7 +26,7 @@ class FirstViewController: UIViewController {
     
     private var selectedRouter: TransitionRouter? {
         didSet {
-            let vc = SecondViewController()
+            let vc = ColorViewController(color: .blue)
             vc.transitioningDelegate = selectedRouter
             present(vc, animated: true)
         }
@@ -52,9 +52,9 @@ class FirstViewController: UIViewController {
         rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
         view.addSubview(rightButton)
         
-        configureTopInteractiveRouter()
+//        configureTopInteractiveRouter()
         configureLeftInteractiveRouter()
-        configureBottomInteractiveRouter()
+//        configureBottomInteractiveRouter()
         configureRightInteractiveRouter()
     }
     
@@ -84,7 +84,7 @@ class FirstViewController: UIViewController {
         leftInteractiveRouter
             .add(leftRecognizer)
             .transition { [unowned self] router in
-                let vc = SecondViewController()
+                let vc = ColorViewController(color: .green)
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true)
         }
@@ -96,7 +96,7 @@ class FirstViewController: UIViewController {
         topInteractiveRouter
             .add(topRecognizer)
             .transition { [unowned self] router in
-                let vc = SecondViewController()
+                let vc = ColorViewController(color: .yellow)
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true)
         }
@@ -108,7 +108,7 @@ class FirstViewController: UIViewController {
         bottomInteractiveRouter
             .add(bottomRecognizer)
             .transition { [unowned self] router in
-                let vc = SecondViewController()
+                let vc = ColorViewController(color: .brown)
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true)
         }
@@ -121,7 +121,7 @@ class FirstViewController: UIViewController {
         rightInteractiveRouter
             .add(rightRecognizer)
             .transition { [unowned self] router in
-                let vc = SecondViewController()
+                let vc = ColorViewController(color: .orange)
                 vc.transitioningDelegate = router
                 self.present(vc, animated: true)
         }

@@ -24,7 +24,7 @@ enum AnimatorType {
     }
 }
 
-typealias RouterHandler = ((TransitionRouter) -> Swift.Void)
+typealias RouterHandler = ((TransitionRouter) -> Void)
 typealias UpdateHandler = ((UIPanGestureRecognizer) -> CGFloat)
 
 final class TransitionRouter: NSObject {
@@ -123,19 +123,20 @@ extension TransitionRouter {
         return self
     }
     
-    struct Percent {
-        let translation: CGFloat
-        let maxValue: CGFloat
-        let coefficient: CGFloat
-        
-        var result: CGFloat {
-            return translation / maxValue * 0.5 * coefficient
-        }
-    }
-    
     fileprivate func defaultUpdateHandler() -> UpdateHandler {
         return { [unowned self] recognizer -> CGFloat in
             let translation = recognizer.translation(in: recognizer.view!)
+            
+            struct Percent {
+                let translation: CGFloat
+                let maxValue: CGFloat
+                let coefficient: CGFloat
+                
+                var result: CGFloat {
+                    return translation / maxValue * 0.5 * coefficient
+                }
+            }
+            
             var test: Percent!
             switch self.type {
             case .top: test = Percent(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: 1)

@@ -35,48 +35,23 @@ class FirstViewController: UIViewController {
     private let bottomButton: UIButton = .custom(with: "Bottom")
     private let rightButton: UIButton = .custom(with: "Right")
     
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         
-        view.addSubview(topButton)
         topButton.addTarget(self, action: #selector(topAction), for: .touchUpInside)
-        view.addSubview(leftButton)
+        view.addSubview(topButton)
         leftButton.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
-        view.addSubview(bottomButton)
+        view.addSubview(leftButton)
         bottomButton.addTarget(self, action: #selector(bottomAction), for: .touchUpInside)
-        view.addSubview(rightButton)
+        view.addSubview(bottomButton)
         rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
+        view.addSubview(rightButton)
         
-        let leftRecognizer = UIScreenEdgePanGestureRecognizer()
-        leftRecognizer.edges = .left
-        leftInteractiveRouter
-            .add(leftRecognizer)
-            .transition { [unowned self] router in
-                let vc = SecondViewController()
-                vc.transitioningDelegate = router
-                self.present(vc, animated: true)
-            }
-            .update { recognizer -> CGFloat in
-                let translation = recognizer.translation(in: recognizer.view!)
-                return translation.x / recognizer.view!.bounds.width * 0.5
-            }
-        view.addGestureRecognizer(leftRecognizer)
-        
-        let rightRecognizer = UIScreenEdgePanGestureRecognizer()
-        rightRecognizer.edges = .right
-        rightInteractiveRouter
-            .add(rightRecognizer)
-            .transition { [unowned self] router in
-                let vc = SecondViewController()
-                vc.transitioningDelegate = router
-                self.present(vc, animated: true)
-            }
-            .update { recognizer -> CGFloat in
-                let translation = recognizer.translation(in: recognizer.view!)
-                return translation.x / recognizer.view!.bounds.width * 0.5  * -1
-            }
-        view.addGestureRecognizer(rightRecognizer)
+        configureLeftInteractiveRouter()
+        configureRightInteractiveRouter()
     }
     
     override func viewDidLayoutSubviews() {
@@ -91,6 +66,42 @@ class FirstViewController: UIViewController {
         for button in buttons {
             button.frame.size = CGSize(width: 100, height: 20)
         }
+    }
+    
+    //MARK: - Configuration
+    
+    func configureLeftInteractiveRouter() {
+        let leftRecognizer = UIScreenEdgePanGestureRecognizer()
+        leftRecognizer.edges = .left
+        leftInteractiveRouter
+            .add(leftRecognizer)
+            .transition { [unowned self] router in
+                let vc = SecondViewController()
+                vc.transitioningDelegate = router
+                self.present(vc, animated: true)
+            }
+            .update { recognizer -> CGFloat in
+                let translation = recognizer.translation(in: recognizer.view!)
+                return translation.x / recognizer.view!.bounds.width * 0.5
+        }
+        view.addGestureRecognizer(leftRecognizer)
+    }
+    
+    func configureRightInteractiveRouter() {
+        let rightRecognizer = UIScreenEdgePanGestureRecognizer()
+        rightRecognizer.edges = .right
+        rightInteractiveRouter
+            .add(rightRecognizer)
+            .transition { [unowned self] router in
+                let vc = SecondViewController()
+                vc.transitioningDelegate = router
+                self.present(vc, animated: true)
+            }
+            .update { recognizer -> CGFloat in
+                let translation = recognizer.translation(in: recognizer.view!)
+                return translation.x / recognizer.view!.bounds.width * 0.5  * -1
+        }
+        view.addGestureRecognizer(rightRecognizer)
     }
     
     //MARK: - Actions

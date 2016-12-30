@@ -49,9 +49,9 @@ class ViewController: ColorViewController {
         view.addSubview(rightButton)
         
         //Uncomment one of configuration for testing
-        //        configureTopInteractiveRouter()
-        //        configureLeftInteractiveRouter()
-        //        configureBottomInteractiveRouter()
+//        configureTopInteractiveRouter()
+//        configureLeftInteractiveRouter()
+//        configureBottomInteractiveRouter()
         configureRightInteractiveRouter()
     }
     

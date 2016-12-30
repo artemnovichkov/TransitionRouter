@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		047A68C646E00EB6D7D4D7343B801D09 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC9FAE16E2DD68869AF1B29FA0A42A /* AdapterProtocols.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		06FF67421E15115C006A0A3B /* AnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF673C1E15115C006A0A3B /* AnimationOptions.swift */; };
-		06FF67431E15115C006A0A3B /* FadeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF673E1E15115C006A0A3B /* FadeTransitionAnimator.swift */; };
-		06FF67441E15115C006A0A3B /* SlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF673F1E15115C006A0A3B /* SlideTransitionAnimator.swift */; };
-		06FF67451E15115C006A0A3B /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF67401E15115C006A0A3B /* TransitionAnimator.swift */; };
-		06FF67461E15115C006A0A3B /* TransitionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF67411E15115C006A0A3B /* TransitionRouter.swift */; };
+		06FF67551E1635BB006A0A3B /* AnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF674F1E1635BB006A0A3B /* AnimationOptions.swift */; };
+		06FF67561E1635BB006A0A3B /* FadeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF67511E1635BB006A0A3B /* FadeTransitionAnimator.swift */; };
+		06FF67571E1635BB006A0A3B /* SlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF67521E1635BB006A0A3B /* SlideTransitionAnimator.swift */; };
+		06FF67581E1635BB006A0A3B /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF67531E1635BB006A0A3B /* TransitionAnimator.swift */; };
+		06FF67591E1635BB006A0A3B /* TransitionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF67541E1635BB006A0A3B /* TransitionRouter.swift */; };
 		07722FBCF6B380961B9D2832D5883F45 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEE1F436B68692319DE23FF7A16197E /* BeGreaterThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		0AEC20AACF9B10846830274E3B2AA6FD /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C1AC4144C4405F39189731DF06CEC /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		0D7B92FA7C0AC63DC50F4F2284F008D9 /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E2114ED8AE0D3C939FFE5084E2DAEC /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -152,11 +152,11 @@
 		04F10AA7D49AA59EDAA9771CD96960B9 /* SuiteHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SuiteHooks.swift; path = Sources/Quick/Hooks/SuiteHooks.swift; sourceTree = "<group>"; };
 		05E8C36BA4865751AB3994028E5BE98B /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
 		06E793A8549531332D1762623F08F9BF /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Sources/Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
-		06FF673C1E15115C006A0A3B /* AnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationOptions.swift; sourceTree = "<group>"; };
-		06FF673E1E15115C006A0A3B /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
-		06FF673F1E15115C006A0A3B /* SlideTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionAnimator.swift; sourceTree = "<group>"; };
-		06FF67401E15115C006A0A3B /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
-		06FF67411E15115C006A0A3B /* TransitionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRouter.swift; sourceTree = "<group>"; };
+		06FF674F1E1635BB006A0A3B /* AnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationOptions.swift; sourceTree = "<group>"; };
+		06FF67511E1635BB006A0A3B /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
+		06FF67521E1635BB006A0A3B /* SlideTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionAnimator.swift; sourceTree = "<group>"; };
+		06FF67531E1635BB006A0A3B /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		06FF67541E1635BB006A0A3B /* TransitionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRouter.swift; sourceTree = "<group>"; };
 		0B420A0E967EACA015B9CF21B2C491A8 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Quick/DSL/DSL.swift; sourceTree = "<group>"; };
 		0BC4F2CA1ACAB7C5DC246E5970464CA7 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mach_excServer.c; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/mach_excServer.c; sourceTree = "<group>"; };
 		0DD9092AEF8AE5C2375352D88FE92FB8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -341,20 +341,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06FF673B1E15115C006A0A3B /* AnimationOptions */ = {
+		06FF674D1E1635BB006A0A3B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				06FF673C1E15115C006A0A3B /* AnimationOptions.swift */,
+				06FF674E1E1635BB006A0A3B /* AnimationOptions */,
+				06FF67501E1635BB006A0A3B /* Animators */,
+				06FF67541E1635BB006A0A3B /* TransitionRouter.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		06FF674E1E1635BB006A0A3B /* AnimationOptions */ = {
+			isa = PBXGroup;
+			children = (
+				06FF674F1E1635BB006A0A3B /* AnimationOptions.swift */,
 			);
 			path = AnimationOptions;
 			sourceTree = "<group>";
 		};
-		06FF673D1E15115C006A0A3B /* Animators */ = {
+		06FF67501E1635BB006A0A3B /* Animators */ = {
 			isa = PBXGroup;
 			children = (
-				06FF673E1E15115C006A0A3B /* FadeTransitionAnimator.swift */,
-				06FF673F1E15115C006A0A3B /* SlideTransitionAnimator.swift */,
-				06FF67401E15115C006A0A3B /* TransitionAnimator.swift */,
+				06FF67511E1635BB006A0A3B /* FadeTransitionAnimator.swift */,
+				06FF67521E1635BB006A0A3B /* SlideTransitionAnimator.swift */,
+				06FF67531E1635BB006A0A3B /* TransitionAnimator.swift */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -415,21 +425,11 @@
 			path = "Target Support Files/Pods-TransitionRouter_Example";
 			sourceTree = "<group>";
 		};
-		154A2E509AB46E1A19B3A58BF691E8B6 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				06FF673B1E15115C006A0A3B /* AnimationOptions */,
-				06FF673D1E15115C006A0A3B /* Animators */,
-				06FF67411E15115C006A0A3B /* TransitionRouter.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		2198D5F2ED045D8322023C76DC704CDD /* TransitionRouter */ = {
 			isa = PBXGroup;
 			children = (
+				06FF674D1E1635BB006A0A3B /* Sources */,
 				48B79972C0181AA4D37C7D7F5C115A43 /* Support Files */,
-				CF5B13D21E5A0E40BFBDC6208A0E73DF /* TransitionRouter */,
 			);
 			name = TransitionRouter;
 			path = ../..;
@@ -618,14 +618,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Quick";
-			sourceTree = "<group>";
-		};
-		CF5B13D21E5A0E40BFBDC6208A0E73DF /* TransitionRouter */ = {
-			isa = PBXGroup;
-			children = (
-				154A2E509AB46E1A19B3A58BF691E8B6 /* Classes */,
-			);
-			path = TransitionRouter;
 			sourceTree = "<group>";
 		};
 		F154A167CC9AC286CB008DF3527B8F65 /* Support Files */ = {
@@ -832,11 +824,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C492F5EC4F892AAA63C5979FFC372AC0 /* TransitionRouter-dummy.m in Sources */,
-				06FF67461E15115C006A0A3B /* TransitionRouter.swift in Sources */,
-				06FF67421E15115C006A0A3B /* AnimationOptions.swift in Sources */,
-				06FF67451E15115C006A0A3B /* TransitionAnimator.swift in Sources */,
-				06FF67431E15115C006A0A3B /* FadeTransitionAnimator.swift in Sources */,
-				06FF67441E15115C006A0A3B /* SlideTransitionAnimator.swift in Sources */,
+				06FF67591E1635BB006A0A3B /* TransitionRouter.swift in Sources */,
+				06FF67551E1635BB006A0A3B /* AnimationOptions.swift in Sources */,
+				06FF67581E1635BB006A0A3B /* TransitionAnimator.swift in Sources */,
+				06FF67561E1635BB006A0A3B /* FadeTransitionAnimator.swift in Sources */,
+				06FF67571E1635BB006A0A3B /* SlideTransitionAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

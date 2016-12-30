@@ -10,13 +10,19 @@ import UIKit
 
 public struct AnimationOptions {
     
-    let duration: TimeInterval
-    let option: UIViewAnimationOptions
-    let delay: TimeInterval
+    public let duration: TimeInterval
+    public let option: UIViewAnimationOptions
+    public let delay: TimeInterval
     /// Max value for interactive transition finishing
-    let percentage: CGFloat
+    public let percentage: CGFloat
     
-    static var `default`: AnimationOptions {
-        return AnimationOptions(duration: 0.3, option: .curveEaseOut, delay: 0, percentage: 0.3)
+    public init(duration: TimeInterval = 0.3,
+                option: UIViewAnimationOptions = .curveEaseOut,
+                delay: TimeInterval = 0,
+                percentage: CGFloat = 0.3) {
+        self.duration = duration
+        self.option = option
+        self.delay = delay
+        self.percentage = percentage
     }
 }

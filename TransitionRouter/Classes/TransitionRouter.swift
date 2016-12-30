@@ -67,14 +67,14 @@ public class TransitionRouter: NSObject {
     
     //MARK: - Actions
     
-    @objc fileprivate func handleGesture(gestureRecognizer: UIPanGestureRecognizer) {
+    @objc fileprivate func handle(_ gestureRecognizer: UIPanGestureRecognizer) {
         switch gestureRecognizer.state {
         case .began:
             transitionHandler?(self)
         case .changed:
             var percentage: CGFloat = 0
-            let updateHandler = self.updateHandler ?? defaultUpdateHandler()
-            percentage = updateHandler(gestureRecognizer)
+            let handler = self.updateHandler(for: self.type)
+            percentage = handler(gestureRecognizer)
             currentPercentage = percentage
             interactiveAnimator?.update(percentage)
         case .cancelled, .ended:
@@ -115,7 +115,7 @@ public extension TransitionRouter {
     /// - Returns: A router used as target of recognizer.
     @discardableResult
     func add(_ recognizer: UIPanGestureRecognizer) -> TransitionRouter {
-        recognizer.addTarget(self, action: .handleGesture)
+        recognizer.addTarget(self, action: .handle)
         return self
     }
     
@@ -139,7 +139,17 @@ public extension TransitionRouter {
         return self
     }
     
-    fileprivate func defaultUpdateHandler() -> UpdateHandler {
+    fileprivate func updateHandler(for type: AnimatorType) -> UpdateHandler {
+        switch type {
+        case .custom:
+            assert(self.updateHandler != nil, "TransitionRouter doesn't have default update logic for custom animators. Call update(handler:) before starting of transition.")
+            return self.updateHandler!
+        default:
+            return defaultUpdateHandler(for: type)
+        }
+    }
+    
+    private func defaultUpdateHandler(for type: AnimatorType) -> UpdateHandler {
         return { [unowned self] recognizer -> CGFloat in
             let translation = recognizer.translation(in: recognizer.view!)
             
@@ -154,12 +164,12 @@ public extension TransitionRouter {
             }
             
             var percentage: Percentage!
-            switch self.type {
+            switch type {
             case .top:    percentage = Percentage(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: 1)
             case .left:   percentage = Percentage(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: 1)
             case .bottom: percentage = Percentage(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: -1)
             case .right:  percentage = Percentage(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: -1)
-            case .custom: break //TODO: Add warning to add update handler
+            case .custom: break
             }
             return percentage.result
         }
@@ -168,5 +178,5 @@ public extension TransitionRouter {
 
 //MARK: - Selector
 fileprivate extension Selector {
-    static let handleGesture = #selector(TransitionRouter.handleGesture)
+    static let handle = #selector(TransitionRouter.handle)
 }

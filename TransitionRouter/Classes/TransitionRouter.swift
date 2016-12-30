@@ -78,16 +78,11 @@ public class TransitionRouter: NSObject {
             currentPercentage = percentage
             interactiveAnimator?.update(percentage)
         case .cancelled, .ended:
-            guard let percentage = currentPercentage else {
+            guard let percentage = currentPercentage, percentage >= options.percentage else {
                 interactiveAnimator?.cancel()
                 return
             }
-            if percentage >= options.percentage {
-                interactiveAnimator?.finish()
-            }
-            else {
-                interactiveAnimator?.cancel()
-            }
+            interactiveAnimator?.finish()
         default: break
         }
     }

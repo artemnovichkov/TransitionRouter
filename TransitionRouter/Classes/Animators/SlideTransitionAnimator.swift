@@ -12,10 +12,10 @@ enum AnimationDirection {
     case top, left, bottom, right
 }
 
-final class SlideTransitionAnimator: NSObject, TransitionAnimator {
+public final class SlideTransitionAnimator: NSObject, TransitionAnimator {
     
-    var presenting = true
-    var options: AnimationOptions = .default
+    public var presenting = true
+    public var options = AnimationOptions()
     
     fileprivate let direction: AnimationDirection
     
@@ -26,11 +26,11 @@ final class SlideTransitionAnimator: NSObject, TransitionAnimator {
 
 extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return options.duration
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         return animateTransition(for: presenting)(transitionContext)
     }
     

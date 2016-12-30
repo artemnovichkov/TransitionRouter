@@ -16,10 +16,10 @@ public protocol TransitionAnimator: UIViewControllerAnimatedTransitioning {
     var options: AnimationOptions { get set }
 }
 
-typealias Controllers = (fromViewController: UIViewController, toViewController: UIViewController)
-typealias AnimateTransitionHandler = (UIViewControllerContextTransitioning) -> ()
+public typealias Controllers = (fromViewController: UIViewController, toViewController: UIViewController)
+public typealias AnimateTransitionHandler = (UIViewControllerContextTransitioning) -> ()
 
-extension TransitionAnimator {
+public extension TransitionAnimator {
     
     /// Adds toViewController on corrent context.
     ///
@@ -45,7 +45,7 @@ extension TransitionAnimator {
     }
 }
 
-extension UIViewControllerContextTransitioning {
+public extension UIViewControllerContextTransitioning {
     
     /// Default completion with correct finish state.
     var completion: ((Bool) -> Void) {

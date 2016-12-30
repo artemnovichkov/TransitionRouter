@@ -8,19 +8,19 @@
 
 import UIKit
 
-class FadeTransitionAnimator: NSObject, TransitionAnimator {
+public final class FadeTransitionAnimator: NSObject, TransitionAnimator {
     
-    var presenting = true
-    var options: AnimationOptions = .default
+    public var presenting = true
+    public var options = AnimationOptions()
 }
 
 extension FadeTransitionAnimator: UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return options.duration
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         return animateTransition(for: presenting)(transitionContext)
     }
     

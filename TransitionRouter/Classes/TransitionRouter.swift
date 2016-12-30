@@ -42,7 +42,7 @@ public class TransitionRouter: NSObject {
     private var currentPercentage: CGFloat?
     
     /// Options for transition animation
-    var options: AnimationOptions = .default {
+    public var options = AnimationOptions() {
         didSet {
             animator.options = options
         }

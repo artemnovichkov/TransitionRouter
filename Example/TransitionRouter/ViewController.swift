@@ -18,7 +18,7 @@ extension UIButton {
     }
 }
 
-class ViewController: UIViewController {
+class ViewController: ColorViewController {
     
     private var selectedRouter: TransitionRouter? {
         didSet {
@@ -38,7 +38,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         
         topButton.addTarget(self, action: #selector(topAction), for: .touchUpInside)
         view.addSubview(topButton)
@@ -68,10 +67,6 @@ class ViewController: UIViewController {
         for button in buttons {
             button.frame.size = CGSize(width: 100, height: 20)
         }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
     
     //MARK: - Configuration

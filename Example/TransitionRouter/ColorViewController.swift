@@ -13,6 +13,8 @@ class ColorViewController: UIViewController {
     private let button: UIButton = .custom(with: "Dismiss")
     private let color: UIColor
     
+    //MARK: - Lifecycle
+    
     init(color: UIColor) {
         self.color = color
         super.init(nibName: nil, bundle: nil)
@@ -29,12 +31,19 @@ class ColorViewController: UIViewController {
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
     
-    func buttonAction() {
-        self.dismiss(animated: true)
-    }
-    
     override func viewDidLayoutSubviews() {
         button.center = view.center
         button.frame.size = CGSize(width: 100, height: 20)
+    }
+    
+    //Just for top and bottom edge gesture recognizers
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    //MARK: - Actions
+    
+    func buttonAction() {
+        self.dismiss(animated: true)
     }
 }

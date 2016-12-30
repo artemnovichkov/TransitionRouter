@@ -143,7 +143,7 @@ public extension TransitionRouter {
         return { [unowned self] recognizer -> CGFloat in
             let translation = recognizer.translation(in: recognizer.view!)
             
-            struct Percent {
+            struct Percentage {
                 let translation: CGFloat
                 let maxValue: CGFloat
                 let coefficient: CGFloat
@@ -153,15 +153,15 @@ public extension TransitionRouter {
                 }
             }
             
-            var test: Percent!
+            var percentage: Percentage!
             switch self.type {
-            case .top:    test = Percent(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: 1)
-            case .left:   test = Percent(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: 1)
-            case .bottom: test = Percent(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: -1)
-            case .right:  test = Percent(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: -1)
+            case .top:    percentage = Percentage(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: 1)
+            case .left:   percentage = Percentage(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: 1)
+            case .bottom: percentage = Percentage(translation: translation.y, maxValue: recognizer.view!.bounds.height, coefficient: -1)
+            case .right:  percentage = Percentage(translation: translation.x, maxValue: recognizer.view!.bounds.width, coefficient: -1)
             case .custom: break //TODO: Add warning to add update handler
             }
-            return test.result
+            return percentage.result
         }
     }
 }

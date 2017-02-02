@@ -1,6 +1,0 @@
-framework module TransitionRouter {
-  umbrella header "TransitionRouter-umbrella.h"
-
-  export *
-  module * { export * }
-}

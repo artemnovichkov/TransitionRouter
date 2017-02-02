@@ -34,7 +34,7 @@ extension SlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
         return animateTransition(for: presenting)(transitionContext)
     }
     
-    //MARK: - Private
+    // MARK: - Private
     
     private func animateTransition(for presenting: Bool) -> AnimateTransitionHandler {
         return presenting ? show : dismiss

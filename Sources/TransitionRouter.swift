@@ -48,7 +48,7 @@ public class TransitionRouter: NSObject {
         }
     }
     
-    //MARK: - Lilecycle
+    // MARK: - Lilecycle
     
     /// Returns an object initialized with type and interactive option.
     ///
@@ -65,7 +65,7 @@ public class TransitionRouter: NSObject {
         self.animator = animator
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @objc fileprivate func handle(_ gestureRecognizer: UIPanGestureRecognizer) {
         switch gestureRecognizer.state {
@@ -88,7 +88,7 @@ public class TransitionRouter: NSObject {
     }
 }
 
-//MARK: - UIViewControllerTransitioningDelegate
+// MARK: - UIViewControllerTransitioningDelegate
 extension TransitionRouter: UIViewControllerTransitioningDelegate {
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -106,7 +106,7 @@ extension TransitionRouter: UIViewControllerTransitioningDelegate {
     }
 }
 
-//MARK: - Recognizers
+// MARK: - Recognizers
 public extension TransitionRouter {
     
     /// Adds a target and an action to the router for interactive animation.
@@ -176,7 +176,7 @@ public extension TransitionRouter {
     }
 }
 
-//MARK: - Selector
+// MARK: - Selector
 fileprivate extension Selector {
     static let handle = #selector(TransitionRouter.handle)
 }

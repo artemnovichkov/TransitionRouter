@@ -34,7 +34,7 @@ class ViewController: ColorViewController {
     private let bottomButton: UIButton = .custom(with: "Bottom")
     private let rightButton: UIButton = .custom(with: "Right")
     
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ class ViewController: ColorViewController {
         }
     }
     
-    //MARK: - Configuration
+    // MARK: - Configuration
     
     func configureLeftInteractiveRouter() {
         let leftRecognizer = UIScreenEdgePanGestureRecognizer()
@@ -121,7 +121,7 @@ class ViewController: ColorViewController {
         view.addGestureRecognizer(rightRecognizer)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     func topAction() {
         selectedRouter = TransitionRouter(type: .top)
@@ -139,5 +139,3 @@ class ViewController: ColorViewController {
         selectedRouter = TransitionRouter(type: .right)
     }
 }
-
-

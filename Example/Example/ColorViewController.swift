@@ -13,7 +13,7 @@ class ColorViewController: UIViewController {
     private let button: UIButton = .custom(with: "Dismiss")
     private let color: UIColor
     
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     init(color: UIColor) {
         self.color = color
@@ -41,7 +41,7 @@ class ColorViewController: UIViewController {
         return true
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     func buttonAction() {
         self.dismiss(animated: true)

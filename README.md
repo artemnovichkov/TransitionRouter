@@ -1,9 +1,9 @@
 # TransitionRouter
 
-[![CI Status](http://img.shields.io/travis/Artem Novichkov/TransitionRouter.svg?style=flat)](https://travis-ci.org/Artem Novichkov/TransitionRouter)
+![Swift 3.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/TransitionRouter.svg?style=flat)](http://cocoapods.org/pods/TransitionRouter)
-[![License](https://img.shields.io/cocoapods/l/TransitionRouter.svg?style=flat)](http://cocoapods.org/pods/TransitionRouter)
-[![Platform](https://img.shields.io/cocoapods/p/TransitionRouter.svg?style=flat)](http://cocoapods.org/pods/TransitionRouter)
+[![License](https://img.shields.io/cocoapods/l/TransitionRouter.svg?style=flat)](https://github.com/lkzhao/TransitionRouter/blob/master/LICENSE?raw=true)
 
 `TransitionRouter` поможет вам быстро и красиво реализовать кастомные переходы между контроллерами. Интерактивный прототип можно посмотреть [здесь](https://appetize.io/embed/4w292ufed47tfgeuq9ge9p7ce8?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
 ## Using
@@ -65,7 +65,7 @@ leftInteractiveRouter.update { recognizer -> CGFloat in
     return translation.x / recognizer.view!.bounds.width * 0.5
 }
 ```
-Обратите книмание, что для кастомного аниматора вы обязательно должны указать логику прогресса.
+Обратите внимание, что для кастомного аниматора вы обязательно должны указать логику прогресса.
 
 ## Example
 
@@ -73,12 +73,51 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-TransitionRouter is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+###Carthage###
 
-```ruby
-pod "TransitionRouter"
+`github "artemnovichkov/TransitionRouter"`
+
+###CocoaPods###
+
+`pod "TransitionRouter"`
+
+###Swift Package Manager###
+
+#####Step 1#####
+
+`File > New > Project`
+
+#####Step 2#####
+
+Create a `Package.swift` in root directory.
+
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "NameOfYourPackage",
+    dependencies: [
+        .Package(url: "https://github.com/artemnovichkov/TransitionRouter", majorVersion: 0, minor: 1)
+    ]
+)
 ```
+Run `swift package fetch`
+
+#####Step 3#####
+
+Open the Xcode Project File. File > New > Target > **Cocoa Touch Framework** If you don't need Obj-C support remove the .h files in the navigator.
+
+#####Step 4#####
+
+Go in Finder and drag & drop the sources from `Packages/TransitionRouter/Sources` into your project and add it to the TransitionRouter target.
+
+#####Step 5#####
+
+Link your Project to the TransitionRouter dependency. Select your main target and add the CocoaTouchFramework to the Linked Frameworks and Libraries in the General Tab.
+
+###Manual###
+
+Drag the Sources folder into your project. [Download](https://github.com/artemnovichkov/TransitionRouter/releases)
 
 ## Author
 

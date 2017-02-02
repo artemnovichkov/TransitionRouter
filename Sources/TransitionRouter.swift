@@ -150,7 +150,7 @@ public extension TransitionRouter {
     }
     
     private func defaultUpdateHandler(for type: AnimatorType) -> UpdateHandler {
-        return { [unowned self] recognizer -> CGFloat in
+        return { recognizer -> CGFloat in
             let translation = recognizer.translation(in: recognizer.view!)
             
             struct Percentage {

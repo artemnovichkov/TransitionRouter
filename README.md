@@ -5,47 +5,48 @@
 [![Version](https://img.shields.io/cocoapods/v/TransitionRouter.svg?style=flat)](http://cocoapods.org/pods/TransitionRouter)
 [![License](https://img.shields.io/cocoapods/l/TransitionRouter.svg?style=flat)](https://github.com/lkzhao/TransitionRouter/blob/master/LICENSE?raw=true)
 
-`TransitionRouter` поможет вам быстро и красиво реализовать кастомные переходы между контроллерами. Интерактивный прототип можно посмотреть [здесь](https://appetize.io/embed/4w292ufed47tfgeuq9ge9p7ce8?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
+`TransitionRouter` helps you to create custom transitions between controllers fast and easy. Interactive prototype is available [here](https://appetize.io/embed/4w292ufed47tfgeuq9ge9p7ce8?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
 ## Using
-Для того, чтобы использовать `TransitionRouter`, необходимо создать роутер с одним из существующих типов перехода, например:
+How to use `TransitionRouter`? Simple as ABC! You need to create a router with one of transition type like:
 
 ```swift
 let topRouter = TransitionRouter(type: .top)
 ```
 
-Вы также можете использовать свой тип перехода. Для этого достаточно поддержать протокол `TransitionAnimator` и создать роутер с вашим аниматором:
+Also you can create your own custom transition. Just create an object that conforms `TransitionAnimator` protocol and create a router with your object:
 
 ```swift
 let fadeRouter = TransitionRouter(type: .custom(animator: FadeTransitionAnimator()))
 ```
 
-Когда вам будет необходимо сделать переход, достаточно передать созданный роутер в качестве `transitioningDelegate` контроллеру, который нужно показать:
+When you need to start any custom transition, set the router as `transitioningDelegate` of the controller you want to present:
 
 ```swift
 let vc = SecondViewController()
 vc.transitioningDelegate = selectedRouter
 present(vc, animated: true)
 ```
-**Внимание!** У вас должна быть сильная ссылка на роутер.
-## Configuration
-AnimationRouter позволяет настроить свойства анимации перехода:
-* **duration:** продолжительность анимации
-* **option:** `UIViewAnimationOptions`
-* **delay:** задержка перед началом анимации
-* **percentage:** максимальное значение для завершения интерактивной анимации
 
-Параметры анимации можно изменить через свойство `options`. 
+**Don't forget about strong reference for the router!**
+## Configuration
+Of course, you can customize options of default transitions:
+* **duration:** animation duration
+* **option:** `UIViewAnimationOptions`
+* **delay:** delay before animation
+* **percentage:** max percentage to finish interactive transition.
+
+Animation options can be changed via `options` property.
 ## Interactive transitions
-Для реализации возможности интерактивного перехода необходимо создать роутер с параметром interactive:
+To create interactive transition you need to create router with `interactive` parameter:
 ```swift
 let leftInteractiveRouter = TransitionRouter(type: .left, interactive: true)
 ```
-или выставить напрямую через свойство у уже созданного роутера:
+or set directly via property:
 ```swift
 leftInteractiveRouter.interactive = true
 ```
 
-Для того, чтобы управлять прогрессом перехода, необходимо создать `UIPanGestureRecognizer` или его сабкласс и настроить роутер:
+Сertainly, you can control progress of transition. Create `UIPanGestureRecognizer` or its subclass and set the router:
 ```swift
 let leftRecognizer = UIScreenEdgePanGestureRecognizer()
 leftRecognizer.edges = .left
@@ -58,14 +59,14 @@ leftInteractiveRouter
 }
 view.addGestureRecognizer(leftRecognizer)
 ```
-Если вы хотите самостоятельно управлять прогрессом перехода, необходимо настроить роутер следующим образом:
+You can update progress of transition manually:
 ```swift
 leftInteractiveRouter.update { recognizer -> CGFloat in
     let translation = recognizer.translation(in: recognizer.view!)
     return translation.x / recognizer.view!.bounds.width * 0.5
 }
 ```
-Обратите внимание, что для кастомного аниматора вы обязательно должны указать логику прогресса.
+Pay attention - for your custom animator you must set updating logic manually.
 
 ## Example
 
@@ -89,7 +90,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 #####Step 2#####
 
-Create a `Package.swift` in root directory.
+Create a `Package.swift` in a root directory.
 
 ```swift
 import PackageDescription

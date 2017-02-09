@@ -5,7 +5,9 @@
 [![Version](https://img.shields.io/cocoapods/v/TransitionRouter.svg?style=flat)](http://cocoapods.org/pods/TransitionRouter)
 [![License](https://img.shields.io/cocoapods/l/TransitionRouter.svg?style=flat)](https://github.com/lkzhao/TransitionRouter/blob/master/LICENSE?raw=true)
 
-`TransitionRouter` helps you to create custom transitions between controllers fast and easy. Interactive prototype is available [here](https://appetize.io/embed/4w292ufed47tfgeuq9ge9p7ce8?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3).
+`TransitionRouter` helps you to create custom transitions between controllers fast and easy. Interactive prototype is available [here](https://appetize.io/app/drm4nycf635ymq4pph4abn6vhm?device=iphone5s&scale=75&orientation=portrait&osVersion=10.0).
+
+![TransitionRouter](img/transition-router.gif)
 ## Using
 How to use `TransitionRouter`? Simple as ABC! You need to create a router with one of transition type like:
 
@@ -27,7 +29,7 @@ vc.transitioningDelegate = selectedRouter
 present(vc, animated: true)
 ```
 
-**Don't forget about strong reference for the router!**
+‼️**Don't forget about strong reference for the router!**‼️
 ## Configuration
 Of course, you can customize options of default transitions:
 * **duration:** animation duration

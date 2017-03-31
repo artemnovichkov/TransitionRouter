@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "TransitionRouter"
-  s.version          = "0.2.0"
+  s.version          = "0.2.1"
   s.summary          = "Framework for custom transition in iOS"
 
   s.homepage         = "https://github.com/artemnovichkov/TransitionRouter"

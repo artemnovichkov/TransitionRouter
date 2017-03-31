@@ -31,9 +31,13 @@ public class TransitionRouter: NSObject {
     
     fileprivate var animator: TransitionAnimator
     /// If true, an interactive animator will be use when presenting a view controller.
-    var interactive: Bool
+    public var interactive: Bool {
+        didSet {
+            interactiveAnimator = interactive ? UIPercentDrivenInteractiveTransition() : nil
+        }
+    }
     /// Type of animator
-    let type: AnimatorType
+    public let type: AnimatorType
     
     //properties for interactive transitions
     fileprivate var interactiveAnimator: UIPercentDrivenInteractiveTransition?

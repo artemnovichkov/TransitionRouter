@@ -29,7 +29,7 @@ public typealias UpdateHandler = ((UIPanGestureRecognizer) -> CGFloat)
 
 public class TransitionRouter: NSObject {
     
-    let animator: TransitionAnimator
+    public let animator: TransitionAnimator
     /// If true, an interactive animator will be use when presenting a view controller.
     public var interactive: Bool {
         didSet {

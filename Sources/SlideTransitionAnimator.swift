@@ -77,18 +77,18 @@ fileprivate extension UIViewController {
     }
     
     private func top() {
-        view.frame.origin.y -= view.frame.size.height
+        view.frame.origin.y = -view.frame.size.height
     }
     
     private func left() {
-        view.frame.origin.x -= view.frame.size.width
+        view.frame.origin.x = -view.frame.size.width
     }
     
     private func bottom() {
-        view.frame.origin.y += view.frame.size.height
+        view.frame.origin.y = view.frame.size.height
     }
     
     private func right() {
-        view.frame.origin.x += view.frame.size.width
+        view.frame.origin.x = view.frame.size.width
     }
 }

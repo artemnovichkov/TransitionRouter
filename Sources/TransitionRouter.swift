@@ -39,7 +39,6 @@ public class TransitionRouter: NSObject {
     fileprivate var interactiveAnimator: UIPercentDrivenInteractiveTransition?
     fileprivate var transitionHandler: RouterHandler?
     fileprivate var updateHandler: UpdateHandler?
-    private var currentPercentage: CGFloat?
     
     /// Options for transition animation
     public var options = AnimationOptions() {
@@ -72,13 +71,12 @@ public class TransitionRouter: NSObject {
         case .began:
             transitionHandler?(self)
         case .changed:
-            var percentage: CGFloat = 0
             let handler = self.updateHandler(for: self.type)
-            percentage = handler(gestureRecognizer)
-            currentPercentage = percentage
+            let percentage = handler(gestureRecognizer)
             interactiveAnimator?.update(percentage)
         case .cancelled, .ended:
-            guard let percentage = currentPercentage, percentage >= options.percentage else {
+            interactiveAnimator?.completionSpeed = 0.999 // http://stackoverflow.com/a/22968139/188461
+            guard let percentage = interactiveAnimator?.percentComplete, percentage >= options.percentage else {
                 interactiveAnimator?.cancel()
                 return
             }
@@ -103,6 +101,18 @@ extension TransitionRouter: UIViewControllerTransitioningDelegate {
     
     public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveAnimator
+    }
+}
+
+// MARK: - UINavigationControllerDelegate
+extension TransitionRouter: UINavigationControllerDelegate {
+    
+    public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactiveAnimator
+    }
+    
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return animator
     }
 }
 

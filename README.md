@@ -76,21 +76,21 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-###Carthage###
+### Carthage
 
 `github "artemnovichkov/TransitionRouter"`
 
-###CocoaPods###
+### CocoaPods
 
 `pod "TransitionRouter"`
 
-###Swift Package Manager###
+### Swift Package Manager
 
-#####Step 1#####
+##### Step 1
 
 `File > New > Project`
 
-#####Step 2#####
+##### Step 2
 
 Create a `Package.swift` in a root directory.
 
@@ -106,19 +106,19 @@ let package = Package(
 ```
 Run `swift package fetch`
 
-#####Step 3#####
+##### Step 3
 
 Open the Xcode Project File. File > New > Target > **Cocoa Touch Framework** If you don't need Obj-C support remove the .h files in the navigator.
 
-#####Step 4#####
+##### Step 4
 
 Go in Finder and drag & drop the sources from `Packages/TransitionRouter/Sources` into your project and add it to the TransitionRouter target.
 
-#####Step 5#####
+##### Step 5
 
 Link your Project to the TransitionRouter dependency. Select your main target and add the CocoaTouchFramework to the Linked Frameworks and Libraries in the General Tab.
 
-###Manual###
+### Manual
 
 Drag the Sources folder into your project. [Download](https://github.com/artemnovichkov/TransitionRouter/releases)
 

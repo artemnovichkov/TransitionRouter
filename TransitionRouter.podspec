@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author           = { "Artem Novichkov" => "novichkoff93@gmail.com" }
   s.source           = { :git => "https://github.com/artemnovichkov/TransitionRouter.git", :tag => s.version.to_s }
   
-  s.ios.deployment_target  = '8.0'
+  s.ios.deployment_target  = '11.0'
   s.ios.frameworks         = 'UIKit', 'Foundation'
 
   s.requires_arc = true

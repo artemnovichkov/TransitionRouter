@@ -1,6 +1,6 @@
 # TransitionRouter
 
-![Swift 3.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
+![Swift 5.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/TransitionRouter.svg?style=flat)](http://cocoapods.org/pods/TransitionRouter)
 [![License](https://img.shields.io/cocoapods/l/TransitionRouter.svg?style=flat)](https://github.com/lkzhao/TransitionRouter/blob/master/LICENSE?raw=true)
